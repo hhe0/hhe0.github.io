@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="读书笔记,SQL,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HHE" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="SQL入门推荐书籍。很久以前就看过，现在再翻一遍依然有所收获。">
+<meta name="keywords" content="读书笔记,SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【SQL必知必会】读书笔记">
+<meta property="og:url" content="http://hhe0.github.io/2018/09/02/teach-yourself-sql-in-10-minutes/index.html">
+<meta property="og:site_name" content="HHE">
+<meta property="og:description" content="SQL入门推荐书籍。很久以前就看过，现在再翻一遍依然有所收获。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-07T13:25:51.010Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【SQL必知必会】读书笔记">
+<meta name="twitter:description" content="SQL入门推荐书籍。很久以前就看过，现在再翻一遍依然有所收获。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hhe0.github.io/2018/09/02/teach-yourself-sql-in-10-minutes/">
+
+
+
+
+
+  <title>【SQL必知必会】读书笔记 | HHE</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/hhe0" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HHE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhe0.github.io/2018/09/02/teach-yourself-sql-in-10-minutes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HHE">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HHE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【SQL必知必会】读书笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+          
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-02T19:40:21+08:00">
+                2018-09-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+            <span class="post-updated">
+    &nbsp; | &nbsp;              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>更新于
+    <time itemprop="dateUpdated" datetime="2019-05-07T21:25:51+08:00" content="2019-05-07">
+      2019-05-07
+    </time>
+  </span>
+
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL读书笔记系列/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL读书笔记系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/09/02/teach-yourself-sql-in-10-minutes/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/09/02/teach-yourself-sql-in-10-minutes/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>SQL入门推荐书籍。很久以前就看过，现在再翻一遍依然有所收获。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="了解SQL"><a href="#了解SQL" class="headerlink" title="了解SQL"></a>了解SQL</h2><blockquote>
+<p>介绍SQL是什么以及SQL能做什么。</p>
+</blockquote>
+<h3 id="SQL相关的概念"><a href="#SQL相关的概念" class="headerlink" title="SQL相关的概念"></a>SQL相关的概念</h3><ul>
+<li>数据库：保存有组织的数据的容器（通常是一个文件或一组文件）；</li>
+<li>表：某种特定类型数据的结构化清单；</li>
+<li>模式：关于数据库和表的布局及特性的信息；</li>
+<li>列：表中的一个字段。所有表都是由一个或多个列组成；</li>
+<li>数据类型：所容许的数据的类型。每个表列都有相应的数据类型，它限制（或容许）该列中存储的数据；</li>
+<li>行：表中的一个记录；</li>
+<li>主键：一列（或一组列），其值能够唯一表示表中的每个行；</li>
+<li>SQL：一种专门用来和数据库进行通信的结构化查询语言；</li>
+<li>聚集函数：运行在行组上，计算和返回单个值的函数；</li>
+<li>视图：虚拟的表。与包含数据的表不一样，视图只包含使用时动态检索数据的查询；</li>
+<li>事务处理：用来维护数据库的完整性，它保证成批的SQL操作要么完全执行，要么完全不执行。</li>
+</ul>
+<p>作为主键的条件</p>
+<ul>
+<li>任意两行都不具有相同的主键值；</li>
+<li>每个行都必须具有一个主键值（主键列不允许NULL值）；</li>
+<li>主键列中的值不允许修改或更新；</li>
+<li>主键值不能重用（如果某行从表中删除，它的主键不能赋给以后的新行）。</li>
+</ul>
+<h2 id="检索数据"><a href="#检索数据" class="headerlink" title="检索数据"></a>检索数据</h2><blockquote>
+<p>介绍如何使用SELECT语句从表中检索一个或多个数据列。</p>
+</blockquote>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>未经过显示排序查询得到的结果的顺序不具有特殊意义。可能是数据被添加到表中的顺序，也可能不是；</li>
+<li>SQL语句不区分大小写，但是表名、列名可能区分大小写；</li>
+<li>通过通配符来检索数据可能会因为检索不需要的列而降低查询的性能。</li>
+</ul>
+<h2 id="排序检索数据"><a href="#排序检索数据" class="headerlink" title="排序检索数据"></a>排序检索数据</h2><blockquote>
+<p>介绍如何使用SELECT的ORDER BY子句，根据需要排序检索出的数据。</p>
+</blockquote>
+<h3 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>对多个列进行排序时，除非显示指定该列为DESC，否则都为ASC；</li>
+<li>不推荐根据列位置进行排序；</li>
+<li>该子句必须为SELECT语句的最后一条子句。</li>
+</ul>
+<h2 id="过滤数据"><a href="#过滤数据" class="headerlink" title="过滤数据"></a>过滤数据</h2><blockquote>
+<p>介绍如何使用SELECT语句的WHERE子句指定搜索条件。</p>
+</blockquote>
+<h3 id="注意-2"><a href="#注意-2" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>通常应考虑在SQL中过滤数据而不是在应用层过滤；</li>
+<li>空值的判断是IS NULL而不是= NULL；</li>
+<li>空值NULL与字段包含0、空字符串或仅仅包含空格不同；</li>
+<li>BETWEEN操作费可以用来检索指定数值或者日期之间的数据。</li>
+</ul>
+<h2 id="高级数据过滤"><a href="#高级数据过滤" class="headerlink" title="高级数据过滤"></a>高级数据过滤</h2><blockquote>
+<p>介绍如何组合WHERE子句以建立功能更强、更高级的搜索条件，以及如何使用NOT和IN操作符。</p>
+</blockquote>
+<p>使用IN操作符的好处</p>
+<ul>
+<li>在使用长的合法选项清单时，IN操作符的语法更清楚且更直观；</li>
+<li>在使用IN时，计算的次序更容易管理（因为使用的操作符更少）；</li>
+<li>IN操作符一般比OR操作符清单执行更快；</li>
+<li>IN的最大优点是可以包含其他SELECT语句，使得能够更动态地建立WHERE子句。</li>
+</ul>
+<p>NOT操作符主要用来一些较为复杂的子句，例如NOT EXISTS。</p>
+<h2 id="用通配符进行过滤"><a href="#用通配符进行过滤" class="headerlink" title="用通配符进行过滤"></a>用通配符进行过滤</h2><blockquote>
+<p>介绍什么是通配符、如何使用通配符以及怎样使用LIKE操作符进行通配搜索，以便对数据进行复杂过滤。</p>
+</blockquote>
+<h3 id="注意-3"><a href="#注意-3" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>%表示任何字符出现的任意次数；</li>
+<li>_表示只匹配单个字符而不是多个字符；</li>
+<li>[]用来指定一个字符集，它必须匹配指定位置（通配符的位置）的一个字符；</li>
+</ul>
+<h3 id="使用通配符的技巧"><a href="#使用通配符的技巧" class="headerlink" title="使用通配符的技巧"></a>使用通配符的技巧</h3><ul>
+<li>不要过分使用通配符。如果其他操作符能达到相同的目的，应该使用其他操作符；</li>
+<li>在确实需要使用通配符时，除非确实有必要，否则不要把它们用在搜索模式开始处。把通配符置于搜索模式的开始处，搜索起来是最慢的；</li>
+<li>仔细注意通配符的位置。</li>
+</ul>
+<h2 id="创建计算字段"><a href="#创建计算字段" class="headerlink" title="创建计算字段"></a>创建计算字段</h2><blockquote>
+<p>介绍什么是计算字段、如何创建计算字段以及怎样从应用程序中使用别名引用它们。</p>
+</blockquote>
+<h2 id="使用数据处理函数"><a href="#使用数据处理函数" class="headerlink" title="使用数据处理函数"></a>使用数据处理函数</h2><blockquote>
+<p>介绍什么是函数，DBMS支持何种函数，以及如何使用这些函数。本章还介绍了为什么SQL函数的使用可能会带来问题。</p>
+</blockquote>
+<p>大多数SQL实现支持以下类型的函数</p>
+<ul>
+<li>用于处理文本串的文本函数；</li>
+<li>用于在数值数据上进行算术操作的数值函数；</li>
+<li>用于处理日期和时间值并从这些值中提取特定成分；</li>
+<li>返回DBMS正使用的特殊信息的系统函数。</li>
+</ul>
+<h2 id="汇总数据"><a href="#汇总数据" class="headerlink" title="汇总数据"></a>汇总数据</h2><blockquote>
+<p>介绍什么是SQL的聚集函数以及如何利用它们汇总表的数据。</p>
+</blockquote>
+<p>常用的聚集函数</p>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AVG()</td>
+<td>返回某列的平均值</td>
+</tr>
+<tr>
+<td>COUNT()</td>
+<td>返回某列的行数</td>
+</tr>
+<tr>
+<td>MAX()</td>
+<td>返回某列的最大值</td>
+</tr>
+<tr>
+<td>MIN()</td>
+<td>返回某列的最小值</td>
+</tr>
+<tr>
+<td>SUM()</td>
+<td>返回某列值之和</td>
+</tr>
+</tbody>
+</table>
+<p>COUNT()函数有两种使用方式</p>
+<ul>
+<li>使用COUNT(*)对表中行的数目进行计数，不管表列中包含的是空值(NULL)还是非空值；</li>
+<li>使用COUNT(column)对特定列中具有值的行进行计数，忽略NULL值。 </li>
+</ul>
+<h3 id="注意-4"><a href="#注意-4" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>AVG()函数忽略列值为NULL的行；</li>
+<li>如果指定列名，则指定列的值为空的行被COUNT()函数忽略，但如果COUNT()函数中用的是星号(*)，则不忽略；</li>
+<li>MAX()函数忽略列值为NULL的行；</li>
+<li>MAX()函数在用于文本数据时，如果数据按相应的列排序，则MAX()返回最后一行；</li>
+<li>MIN()函数忽略列值为NULL的行；</li>
+<li>MIN()函数在用于文本数据时，如果数据按相应的列排序，则MIN()返回最前面一行；</li>
+<li>SUM()函数忽略列值为NULL的行。</li>
+</ul>
+<h2 id="分组数据"><a href="#分组数据" class="headerlink" title="分组数据"></a>分组数据</h2><blockquote>
+<p>介绍如何使用分组数据，以便能汇总表内容的子表。这涉及两个新SELECT语句子句，分别是：GROUP BY子句和HAVING子句。</p>
+</blockquote>
+<h3 id="GROUP-BY语句的一些重要规定"><a href="#GROUP-BY语句的一些重要规定" class="headerlink" title="GROUP BY语句的一些重要规定"></a>GROUP BY语句的一些重要规定</h3><ul>
+<li>GROUP BY子句可以包含任意数目的列。这使得能对分组进行嵌套，为数据分组提供更细致的空值；</li>
+<li>如果在GROUP BY子句中嵌套了分组，数据将在最后规定的分组上进行汇总。换句话说，在建立分组时，指定所有列都一起计算（所以不能从个别的列取回数据）；</li>
+<li>GROUP BY子句中列出的每个列都必须是检索列会有效的表达式（但不能是聚集函数）。如果在SELECT中使用表达式，则必须在GROUP BY子句中指定相同的表达式。不能使用别名；</li>
+<li>大多数SQL实现不允许GROUP BY列带有长度可变的数据类型（如文本或备注型字段）；</li>
+<li>除聚集计算语句外，SELECT语句中的每个列都必须在GROUP BY子句中给出；</li>
+<li>如果分组列中具有NULL值，则NULL将作为一个分组返回。如果列中有多行NULL值，它们将分为一组；</li>
+<li>GROUP BY子句必须出现在WHERE子句之后，ORDER BY子句之前。</li>
+</ul>
+<h3 id="HAVING与WHERE的区别"><a href="#HAVING与WHERE的区别" class="headerlink" title="HAVING与WHERE的区别"></a>HAVING与WHERE的区别</h3><ul>
+<li>HAVING过滤分组，WHERE过滤行；</li>
+<li>WEHRE在数据分组前进行过滤，HAVING在数据分组后进行过滤。这是一个重要的区别，WHERE排除的行不包括在分组中。这可能会改变计算值，从而影响HAVING子句中基于这些值过滤掉的分组。</li>
+</ul>
+<p>一般在使用GROUP BY子句时，应该也给出ORDRE BY子句。这是保证数据正确排序的唯一方法。千万不要仅依赖GROUP BY排序数据。</p>
+<h2 id="使用子查询"><a href="#使用子查询" class="headerlink" title="使用子查询"></a>使用子查询</h2><blockquote>
+<p>介绍什么是子查询以及如何使用它们。</p>
+</blockquote>
+<h3 id="注意-5"><a href="#注意-5" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>作为子查询的SELECT语句只能查询单个列。企图检索多个列将返回错误；</li>
+<li>使用子查询并不总是执行这种类型的数据检索的最有效的方法。</li>
+</ul>
+<h2 id="联结表"><a href="#联结表" class="headerlink" title="联结表"></a>联结表</h2><blockquote>
+<p>介绍什么是联结，为什么要使用联结，以及编写使用联结的SELECT语句。</p>
+</blockquote>
+<h2 id="创建高级联结"><a href="#创建高级联结" class="headerlink" title="创建高级联结"></a>创建高级联结</h2><blockquote>
+<p>介绍其他的一些联结类型（包含它们的含义和使用方法），介绍如何对被联结的表使用表别名和聚集函数。</p>
+</blockquote>
+<h3 id="注意-6"><a href="#注意-6" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>联结的几种类型：内部联结（等值联结）、自联结、自然联结和外部联结；</li>
+<li>注意所使用的联结类型。一般我们使用内部联结，但使用外部联结也是有效的；</li>
+<li>关于确切的联结语法，应该查看具体的文档，看相应的DBMS支持何种语法；</li>
+<li>保证使用正确的联结条件（不管使用何种语法），否则将返回不正确的数据；</li>
+<li>应该总是提供联结条件，否则会得到笛卡尔积；</li>
+<li>在一个联结表中可以包含多个表，甚至对于每个联结可以采用不同的联结类型。虽然这样做是合法的，一般也很有用，但应该在一起测试它们前，分别测试每个联结。这将使故障排除更为简单。</li>
+</ul>
+<h2 id="组合查询"><a href="#组合查询" class="headerlink" title="组合查询"></a>组合查询</h2><blockquote>
+<p>介绍如何使用UNION操作符将多条SELECT语句组合成一个结果集。</p>
+</blockquote>
+<p>有两种基本情况，其中需要使用组合查询</p>
+<ul>
+<li>在单个查询中从不同的表类似返回结构数据；</li>
+<li>对单个表执行多个查询，按单个查询返回数据。</li>
+</ul>
+<h3 id="UNION规则"><a href="#UNION规则" class="headerlink" title="UNION规则"></a>UNION规则</h3><ul>
+<li>UNION规则由两条或两条以上的SELECT语句组成，语句之间用关键字UNION分隔；</li>
+<li>UNION中的每个查询必须包含相同的列、表达式或聚集函数（不过各个列不需要以相同的次序列出）；</li>
+<li>列数据类型必须兼容：类型不必完全相同，但必须是DBMS可以隐含地转换的类型；</li>
+<li>使用UNION ALL，DBMS不取消重复的行。</li>
+</ul>
+<h2 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h2><blockquote>
+<p>介绍如何利用SQL的INSERT语句将数据插入表中。</p>
+</blockquote>
+<p>插入可以用一下几种方式使用</p>
+<ul>
+<li>插入完整的行；</li>
+<li>插入行的一部分；</li>
+<li>插入某些查询的部分。</li>
+</ul>
+<h3 id="注意-7"><a href="#注意-7" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>一般不要使用没有明确给出列的列表的INSERT语句。使用列的列表能使SQL代码继续发挥作用，即使表结构发生了变化；</li>
+<li>INSERT SELECT与SELECT INTO之间的一个重要差别是前者导出数据，而后者导入表。</li>
+</ul>
+<h2 id="更新和删除数据"><a href="#更新和删除数据" class="headerlink" title="更新和删除数据"></a>更新和删除数据</h2><blockquote>
+<p>介绍如何利用UPDATE和DELETE语句进一步操纵表数据。</p>
+</blockquote>
+<h3 id="注意-8"><a href="#注意-8" class="headerlink" title="注意"></a>注意</h3><ul>
+<li>除非确实打算更新和删除每一行，否则绝对不要使用不带WHERE子句的UPDATE或DELETE语句；</li>
+<li>保证每个表都有主键，尽可能像WHERE子句那样使用它；</li>
+<li>在对UPDATE或DELETE语句使用WHERE子句前，应该先用SELECT进行测试，保证它过滤的是正确的记录，以防编写的WHERE子句不正确；</li>
+<li>使用强制实施引用完整性的数据库，这样DBMS将不允许删除具有与其他表相关联的数据的行；</li>
+<li>有的DBMS允许数据库管理员施加约束，以防止执行不带WHERE子句的UPDATE或DELETE。如果所采用的DBMS支持这个特性，应该使用它。</li>
+</ul>
+<h2 id="创建和操纵表"><a href="#创建和操纵表" class="headerlink" title="创建和操纵表"></a>创建和操纵表</h2><blockquote>
+<p>介绍表的创建、更改和删除的基本知识。</p>
+</blockquote>
+<p>更新表时需要考虑的内容</p>
+<ul>
+<li>一般来说，在表中包含数据时不要对其进行更新。应该在表的设计过程中充分考虑未来可能的需求，以便今后不会对表的结构作大的改动；</li>
+<li>所有DBMS都允许给现有的表增加列，不过对所增加的列的数据类型（以及NULL和DEFAULT的使用）有所限制；</li>
+<li>许多DBMS不允许删除或更改表中的列；</li>
+<li>多数DBMS允许重新命名表中的列；</li>
+<li>许多DBMS对已经填有数据的列的更改有限制，对为填有数据的列几乎没有限制。</li>
+</ul>
+<h2 id="使用视图"><a href="#使用视图" class="headerlink" title="使用视图"></a>使用视图</h2><blockquote>
+<p>介绍视图是什么，它们怎样工作，何时使用它们。</p>
+</blockquote>
+<p>视图的常见使用场景</p>
+<ul>
+<li>重用SQL语句；</li>
+<li>简化复杂的SQL操作。在编写查询后，可以方便地重用它而不必知道它的基本查询细节；</li>
+<li>使用表的组成部分而不是整个表；</li>
+<li>保护数据。可以给用户授予表的特定部分的访问权限而不是整个表的访问权限；</li>
+<li>更改数据格式和表示。视图可返回与底层表的表示和格式不同的数据。</li>
+</ul>
+<h3 id="注意-9"><a href="#注意-9" class="headerlink" title="注意"></a>注意</h3><blockquote>
+<p>因为视图不包含数据，所以每次使用视图时，都必须处理查询执行时所需的任一个检索。如果你用多个联结和过滤创建了复杂的视图或者嵌套了视图，可能会发现性能下降得很厉害。因此，在部署使用了大量视图的应用前，应该进行测试。</p>
+</blockquote>
+<h3 id="视图的规则和限制"><a href="#视图的规则和限制" class="headerlink" title="视图的规则和限制"></a>视图的规则和限制</h3><ul>
+<li>与表一样，视图必须唯一命名（也不能与表重名）；</li>
+<li>对于可以创建的视图数目没有限制；</li>
+<li>为了创建视图，必须具有足够的访问权限；</li>
+<li>视图可以嵌套；</li>
+<li>许多DBMS禁止在视图查询中使用ORDRE BY子句；</li>
+<li>有的DBMS要求命名返回的所有列，如果列是计算字段，则需要使用别名；</li>
+<li>视图不能索引，也不能有关联的触发器或默认值；</li>
+<li>有的DBMS把视图作为只读的查询，这表示可以从视图检索数据，但不能将数据写会底层表；</li>
+<li>有的DBMS允许创建这样的视图，它不允许进行导致不再属于视图的插入或更新。</li>
+</ul>
+<h2 id="使用存储过程"><a href="#使用存储过程" class="headerlink" title="使用存储过程"></a>使用存储过程</h2><blockquote>
+<p>介绍什么是存储过程，为什么要使用存储过程以及如何使用存储过程，并且介绍创建和使用存储过程的基本语法。</p>
+</blockquote>
+<h3 id="为什么要使用存储过程"><a href="#为什么要使用存储过程" class="headerlink" title="为什么要使用存储过程"></a>为什么要使用存储过程</h3><ul>
+<li>通过把处理封装在容易使用的单元中，简化复杂的操作；</li>
+<li>由于不要求反复建立一系列处理步骤，保证了数据的一致性；</li>
+<li>简化对变动的管理；</li>
+<li>因为存储过程通常以编译过的形式存储，所以DBMS为处理命名所做的工作较少。结果是提高了性能；</li>
+<li>存在一些只能用在单个请求中的SQL元素和特定，存储过程可以使用它们来编写功能更强更灵活的代码。</li>
+</ul>
+<h2 id="管理事务处理"><a href="#管理事务处理" class="headerlink" title="管理事务处理"></a>管理事务处理</h2><blockquote>
+<p>介绍什么是事务处理以及如何利用COMMIT和ROLLBACK语句来管理实务处理。</p>
+</blockquote>
+<p>事务相关概念</p>
+<ul>
+<li>事务：一组SQL语句；</li>
+<li>回退：撤销指定SQL语句的过程；</li>
+<li>提交：将未存储的SQL语句结果写入数据库表；</li>
+<li>保留表：事务处理中设置的临时占位符，可以对它发布回退（与回退整个事务处理不同）。</li>
+</ul>
+<h2 id="使用游标"><a href="#使用游标" class="headerlink" title="使用游标"></a>使用游标</h2><blockquote>
+<p>介绍了什么是游标以及如何使用游标。</p>
+</blockquote>
+<p>游标常见的一些选项和特性</p>
+<ul>
+<li>能够标记游标为只读，使数据能读取，但不能更新和删除；</li>
+<li>能控制可以执行的定向操作（向前、向后、第一、最后、绝对位置、相对位置等）；</li>
+<li>能标记某些列为可编辑的，某些列为不可编辑的；</li>
+<li>规定范围，使游标对创建它的特定请求（如存储过程）或对所有请求可访问；</li>
+<li>指定DBMS对检索出的数据（而不是指出表中活动数据）做复制，使在游标打开和访问期间数据不变化。</li>
+</ul>
+<p>使用游标的几个步骤</p>
+<ul>
+<li>在能够使用游标前，必须声明（定义）它；</li>
+<li>一旦声明后，必须打开游标以供使用；</li>
+<li>对于填有数据的游标，根据需要去除（检索）各行；</li>
+<li>在结束游标使用时，必须关闭游标，可能的话，释放游标。</li>
+</ul>
+<h2 id="了解高级SQL特性"><a href="#了解高级SQL特性" class="headerlink" title="了解高级SQL特性"></a>了解高级SQL特性</h2><blockquote>
+<p>介绍了SQL所涉及的几个高级数据处理特性：约束、索引和触发器。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------内容原创<i class="fa fa-paw"></i>转载请注明-------------</div>
+    
+</div>
+  
+</div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag"><i class="fa fa-tag"></i> 读书笔记</a>
+          
+            <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/29/how-computer-works/" rel="next" title="【计算机是怎样跑起来的】读书笔记">
+                <i class="fa fa-chevron-left"></i> 【计算机是怎样跑起来的】读书笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/02/the-long-night/" rel="prev" title="【长夜难明】书摘">
+                【长夜难明】书摘 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="HHE">
+            
+              <p class="site-author-name" itemprop="name">HHE</p>
+              <p class="site-description motion-element" itemprop="description">三日不读书，面目可憎</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hhe0" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hhe_minc@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://book.douban.com/people/122942737/" target="_blank" title="豆瓣读书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>豆瓣读书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://movie.douban.com/people/122942737/" target="_blank" title="豆瓣电影">
+                      
+                        <i class="fa fa-fw fa-globe"></i>豆瓣电影</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#了解SQL"><span class="nav-number">1.</span> <span class="nav-text">了解SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL相关的概念"><span class="nav-number">1.1.</span> <span class="nav-text">SQL相关的概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#检索数据"><span class="nav-number">2.</span> <span class="nav-text">检索数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意"><span class="nav-number">2.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序检索数据"><span class="nav-number">3.</span> <span class="nav-text">排序检索数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-1"><span class="nav-number">3.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过滤数据"><span class="nav-number">4.</span> <span class="nav-text">过滤数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-2"><span class="nav-number">4.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级数据过滤"><span class="nav-number">5.</span> <span class="nav-text">高级数据过滤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用通配符进行过滤"><span class="nav-number">6.</span> <span class="nav-text">用通配符进行过滤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-3"><span class="nav-number">6.1.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用通配符的技巧"><span class="nav-number">6.2.</span> <span class="nav-text">使用通配符的技巧</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建计算字段"><span class="nav-number">7.</span> <span class="nav-text">创建计算字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用数据处理函数"><span class="nav-number">8.</span> <span class="nav-text">使用数据处理函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#汇总数据"><span class="nav-number">9.</span> <span class="nav-text">汇总数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-4"><span class="nav-number">9.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分组数据"><span class="nav-number">10.</span> <span class="nav-text">分组数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GROUP-BY语句的一些重要规定"><span class="nav-number">10.1.</span> <span class="nav-text">GROUP BY语句的一些重要规定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HAVING与WHERE的区别"><span class="nav-number">10.2.</span> <span class="nav-text">HAVING与WHERE的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用子查询"><span class="nav-number">11.</span> <span class="nav-text">使用子查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-5"><span class="nav-number">11.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联结表"><span class="nav-number">12.</span> <span class="nav-text">联结表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建高级联结"><span class="nav-number">13.</span> <span class="nav-text">创建高级联结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-6"><span class="nav-number">13.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#组合查询"><span class="nav-number">14.</span> <span class="nav-text">组合查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UNION规则"><span class="nav-number">14.1.</span> <span class="nav-text">UNION规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入数据"><span class="nav-number">15.</span> <span class="nav-text">插入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-7"><span class="nav-number">15.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新和删除数据"><span class="nav-number">16.</span> <span class="nav-text">更新和删除数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-8"><span class="nav-number">16.1.</span> <span class="nav-text">注意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建和操纵表"><span class="nav-number">17.</span> <span class="nav-text">创建和操纵表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用视图"><span class="nav-number">18.</span> <span class="nav-text">使用视图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注意-9"><span class="nav-number">18.1.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视图的规则和限制"><span class="nav-number">18.2.</span> <span class="nav-text">视图的规则和限制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用存储过程"><span class="nav-number">19.</span> <span class="nav-text">使用存储过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要使用存储过程"><span class="nav-number">19.1.</span> <span class="nav-text">为什么要使用存储过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#管理事务处理"><span class="nav-number">20.</span> <span class="nav-text">管理事务处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用游标"><span class="nav-number">21.</span> <span class="nav-text">使用游标</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#了解高级SQL特性"><span class="nav-number">22.</span> <span class="nav-text">了解高级SQL特性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HHE</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'hhe0',
+            repo: 'hhe0.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'e96e265faa3d579b2046c7e97011c6e4fdaace2f',
+            
+                client_id: '86da837a03e3307d488e'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="读书笔记,PHP,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HHE" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="我们已经知道，借助类型提示和访问控制可以更好地控制类的接口。本章将继续深入探讨PHP对面向对象开发的支持。">
+<meta name="keywords" content="读书笔记,PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【深入PHP：面向对象、模式与实践(二)】读书笔记">
+<meta property="og:url" content="http://hhe0.github.io/2018/10/16/php-objects-patterns-and-practice-2/index.html">
+<meta property="og:site_name" content="HHE">
+<meta property="og:description" content="我们已经知道，借助类型提示和访问控制可以更好地控制类的接口。本章将继续深入探讨PHP对面向对象开发的支持。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-07T13:25:51.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【深入PHP：面向对象、模式与实践(二)】读书笔记">
+<meta name="twitter:description" content="我们已经知道，借助类型提示和访问控制可以更好地控制类的接口。本章将继续深入探讨PHP对面向对象开发的支持。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hhe0.github.io/2018/10/16/php-objects-patterns-and-practice-2/">
+
+
+
+
+
+  <title>【深入PHP：面向对象、模式与实践(二)】读书笔记 | HHE</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/hhe0" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HHE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhe0.github.io/2018/10/16/php-objects-patterns-and-practice-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HHE">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HHE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">【深入PHP：面向对象、模式与实践(二)】读书笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+          
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-16T18:34:28+08:00">
+                2018-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+            <span class="post-updated">
+    &nbsp; | &nbsp;              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>更新于
+    <time itemprop="dateUpdated" datetime="2019-05-07T21:25:51+08:00" content="2019-05-07">
+      2019-05-07
+    </time>
+  </span>
+
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/PHP读书笔记系列/" itemprop="url" rel="index">
+                    <span itemprop="name">PHP读书笔记系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/16/php-objects-patterns-and-practice-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/10/16/php-objects-patterns-and-practice-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p> 我们已经知道，借助<code>类型提示</code>和<code>访问控制</code>可以更好地控制类的接口。本章将继续深入探讨PHP对面向对象开发的支持。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="静态方法和属性"><a href="#静态方法和属性" class="headerlink" title="静态方法和属性"></a>静态方法和属性</h2><ul>
+<li>我们不仅可以通过对象访问方法和属性，还可以通过类来访问它们。这样的方法和属性是“静态的”，必须用<code>static</code>关键字来声明；</li>
+<li>静态方法是以类为作用域的函数。静态方法不能访问这个类中的普通属性，因为那些属性属于一个对象，但可以访问静态属性。如果修改了一个静态属性，那么这个类中的所有实例都能访问到这个新值；</li>
+<li>一个子类可以使用<code>parent</code>关键字来访问父类，而不使用其类名。要从当前类（不是子类）中访问静态方法或属性，可以使用<code>self</code>关键字。只有在使用<code>parent</code>关键字调用方法的时候，才能对一个非静态方法进行静态形式的调用；</li>
+<li>根据定义，我们不能再对象中调用静态方法，因此静态方法和属性又称为类变量和属性，因此不能再静态方法中使用伪变量<code>$this</code>。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">public</span> $aNum = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">sayHello</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">print</span> <span class="string">"hello"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="使用静态方法或属性的好处"><a href="#使用静态方法或属性的好处" class="headerlink" title="使用静态方法或属性的好处"></a>使用静态方法或属性的好处</h3><ul>
+<li>静态方法或属性可以在代码中的任何地方都可用。你不需要在对象间传递类的实例，也不需要将实例存放在全局变量中，就可以访问类中的方法；</li>
+<li>类的每个实例都可以访问类中定义的静态属性，所以可以利用静态属性来设置值，该值可以被类中的所有对象使用；</li>
+<li>不需要实例对象就能访问静态属性或方法，这样我们就不用为了获取一个简单的功能而实例化对象。</li>
+</ul>
+<h2 id="常量属性"><a href="#常量属性" class="headerlink" title="常量属性"></a>常量属性</h2><ul>
+<li>和全局变量一样，类常量一旦设置后就不能改变。常量属性用<code>const</code>关键字来声明。常量不像常规属性那样以美元符号开头。按照惯例，只能用大写字母来命名常量；</li>
+<li>常量属性只包含基本数据类型的值。不能将一个对象指派给常量。像静态属性一样，只能通过类而不能通过类的实例访问常量属性。引用常量时不需要用美元符号作为前导符。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShopProduct</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">const</span> AVAILABLE = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">const</span> OUT_OF_STOCK = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h2><ul>
+<li>抽象类不能被直接实例化。抽象类中之定义（或部分实现）子类需要的方法。子类可以继承它并且通过实现其中的抽象方法，使抽象类具体化；</li>
+<li>大多数情况下，抽象类至少包含一个抽象方法。抽象方法用<code>abstract</code>关键字声明，其中不能由具体内容。你可以像声明普通类方法那样声明抽象方法，但要以分号而不是方法体结束；</li>
+<li>创建抽象方法后，要确保所有子类中都实现了该方法，但实现的细节可以先不确定；</li>
+<li>抽象类的每个子类都必须实现抽象类中的所有抽象方法，或者把它们自身也声明为抽象方法。扩展类不仅仅负责简单实现抽象类中的方法，还必须重新声明方法。新的实现方法的访问控制不能比抽象方法的访问控制严格。新的实现方法的参数个数应该和抽象方法的参数个数一样，重新生成对应的类型提示。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ShopProductWriter</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">protected</span> $products = <span class="keyword">array</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addProduct</span> <span class="params">(ShopProduct $shopProduct)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;products[] = $shopProduct;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><ul>
+<li>接口提供了具体实现的标准，而接口则是纯粹的模板。接口只能定义功能，而不包含实现的内容。接口可用关键字<code>interface</code>来声明。接口可以包含属性和方法声明，但是方法体为空；</li>
+<li>任何实现接口的类都要实现接口所定义的所有方法，否则该类必须声明为<code>abstract</code>；</li>
+<li>由于任何类都可以实现接口（实际上，一个类可以实现多个接口），接口可以有效地将不相关的类型联结起来；</li>
+<li>一个类可以同时实现继承一个父类和实现任意个接口。<code>extends</code>子句应该在<code>implements</code>子句之前；</li>
+<li>PHP只支持继承在一个父类，因此<code>extends</code>关键字只能在一个类名之前。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Chargable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getPrice</span> <span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">calss Consultancy extends TimedService implements Bookable, Chargeable&#123;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="延迟静态绑定：static关键字"><a href="#延迟静态绑定：static关键字" class="headerlink" title="延迟静态绑定：static关键字"></a>延迟静态绑定：static关键字</h2><ul>
+<li>静态方法可以用作工厂方法，工厂方法是生成包含类的实例的一种方法；</li>
+<li>特别注意一点：<code>self</code>对类所起的作用于<code>$this</code>对对象所起的作用并不完全相同。<code>self</code>指的不是调用上下文，它指的是解析上下文；</li>
+<li>PHP中使用<code>static</code>关键字以用于延迟静态绑定，<code>static</code>与<code>self</code>类似，但它指的是被调用的类而不是包含类；</li>
+<li><code>static</code>关键字不仅仅可以用于实例化。和<code>self</code>和<code>parent</code>一样，<code>static</code>还可以作为静态方法调用的标识符，甚至是从非静态上下文中调用。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">DomainObject</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span> <span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 被继承也只能返回DomainObject对象</span></span><br><span class="line">         <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">self</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">DomainObject</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Document</span> <span class="keyword">extends</span> <span class="title">DomainObject</span></span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 会尝试创建一个DomainObject对象而出错，将create方法改为return new static则没有问题</span></span><br><span class="line">Document::create();</span><br></pre></td></tr></table></figure>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><h3 id="常见的错误处理策略"><a href="#常见的错误处理策略" class="headerlink" title="常见的错误处理策略"></a>常见的错误处理策略</h3><ul>
+<li>可以停止执行代码。这个方法很简单，但是过于激烈。这个粗陋的类会导致整个程序停止执行；</li>
+<li>不在类中直接处理错误，而只返回某种错误标志。一些类也可以设置错误字符串或标志，让客户端代码在失败之后可以获得更多信息；</li>
+<li>使用异常。</li>
+</ul>
+<h3 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h3><ul>
+<li>异常是从内置的<code>Exception</code>类（或其子类）实例化得到的特殊对象。<code>Exception</code>类型的对象用于存放和报告错误信息；</li>
+<li><code>Exception</code>类的构造方法接受两个可选的参数：消息字符串和错误代码。</li>
+</ul>
+<p><code>Exception</code>类的<code>public</code>方法</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getMessage()</td>
+<td>获得传递给构造方法的消息字符串</td>
+</tr>
+<tr>
+<td>getCode()</td>
+<td>获得传递给构造方法的错误代码</td>
+</tr>
+<tr>
+<td>getFile()</td>
+<td>获得产生异常的文件</td>
+</tr>
+<tr>
+<td>getLine()</td>
+<td>获得生成异常的行号</td>
+</tr>
+<tr>
+<td>getPrevious()</td>
+<td>获得一个嵌套的异常对象</td>
+</tr>
+<tr>
+<td>getTrace</td>
+<td>获得一个多维数组，这个数组追踪导致异常的方法调用，包含方法、类、文件和参数数据</td>
+</tr>
+<tr>
+<td>getTraceAsString</td>
+<td>获得getTree()返回数据的字符串版本</td>
+</tr>
+<tr>
+<td>__toString()</td>
+<td>在字符串中使用Exception对象时自动调用。返回一个描述异常细节的字符串</td>
+</tr>
+</tbody>
+</table>
+<h4 id="抛出异常"><a href="#抛出异常" class="headerlink" title="抛出异常"></a>抛出异常</h4><ul>
+<li>抛出异常将停止当前方法的执行，并负责将错误返回给调用代码。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">write</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!is_writeable(<span class="keyword">$this</span>-&gt;file))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">"file '&#123;$this-&gt;file&#125;' is not writeable"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    file_put_contents(<span class="keyword">$this</span>-&gt;file, <span class="keyword">$this</span>-&gt;xml-&gt;asXML());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端代码</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    $conf = <span class="keyword">new</span> Cond(dirname(<span class="keyword">__FILE__</span> . <span class="string">"/conf01.xml"</span>));</span><br><span class="line">    $conf-&gt;set(<span class="string">'pass'</span>, <span class="string">'newpass'</span>);</span><br><span class="line">    $conf-&gt;write();</span><br><span class="line">&#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">    <span class="keyword">die</span>($e-&gt;__toString());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="异常的子类化"><a href="#异常的子类化" class="headerlink" title="异常的子类化"></a>异常的子类化</h4><ul>
+<li>将通用的类型放到最后，特定的类型放到前面；</li>
+<li>增加一个“后备”子句防止开发时还要在代码中增加新的异常；</li>
+<li>当异常没有被客户端代码捕获时，异常将会被再次抛出，客户的调用代码会优先捕获它。这样的过程会一再发生，直到异常被捕获或者不再抛出。如果异常到最后也没有被捕获，将会引发致命错误。<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    $conf = <span class="keyword">new</span> Conf(dirname(<span class="keyword">__FILE__</span>) . <span class="string">"/conf01.xml"</span>);</span><br><span class="line">    $conf-&gt;set(<span class="string">'pass'</span>, <span class="string">'newpass'</span>);</span><br><span class="line">    $conf-&gt;write();</span><br><span class="line">&#125; <span class="keyword">catch</span> (FileException $e) &#123;</span><br><span class="line">    <span class="comment">// 文件权限问题或者文件不存在</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (XmlException $e) &#123;</span><br><span class="line">    <span class="comment">// XML文件损坏</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (ConfException $e) &#123;</span><br><span class="line">    <span class="comment">// 错误的XML文件格式</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $e) &#123;</span><br><span class="line">    <span class="comment">// 后备捕捉器，正常情况下不应该被调用</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Final类和方法"><a href="#Final类和方法" class="headerlink" title="Final类和方法"></a>Final类和方法</h2><ul>
+<li>如果希望类或者方法完成确定不变的功能，担心覆写它会破坏这个功能，那么需要使用<code>final</code>关键字；</li>
+<li><code>final</code>关键字可以终止类的继承。<code>final</code>类不能有子类，<code>final</code>方法不能被覆写；</li>
+<li><code>final</code>应该放在其他修饰词之前；</li>
+<li>慎重使用<code>final</code>。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Checkout</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="function"><span class="keyword">function</span> <span class="title">totalize</span> <span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 计算账单</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以继承一个非final类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">IllegalCheckout</span> <span class="keyword">extends</span> <span class="title">Checkout</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 覆写一个final方法会导致出错</span></span><br><span class="line">    <span class="keyword">final</span> <span class="function"><span class="keyword">function</span> <span class="title">totalize</span> <span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 修改账单计算方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用拦截器"><a href="#使用拦截器" class="headerlink" title="使用拦截器"></a>使用拦截器</h2><ul>
+<li><code>PHP</code>提供了内置的拦截器方法，它可拦截发送到未定义方法和属性的消息。</li>
+</ul>
+<h3 id="拦截器方法"><a href="#拦截器方法" class="headerlink" title="拦截器方法"></a>拦截器方法</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>__get($property)</td>
+<td>访问未定义的属性时被调用</td>
+</tr>
+<tr>
+<td>__set($property, $value)</td>
+<td>给未定义的属性赋值时被调用</td>
+</tr>
+<tr>
+<td>__isset($property)</td>
+<td>对未定义的属性调用isset()是被调用</td>
+</tr>
+<tr>
+<td>__unset($property)</td>
+<td>对未定义的属性调用unset()时被调用</td>
+</tr>
+<tr>
+<td>__call($method, $arg_array)</td>
+<td>调用未定义的方法时被调用</td>
+</tr>
+</tbody>
+</table>
+<h2 id="析构方法"><a href="#析构方法" class="headerlink" title="析构方法"></a>析构方法</h2><ul>
+<li><code>PHP</code>提供了一个析构方法<code>__destruct()</code>，它只在对象被垃圾收集器收集前（即对象从内存中删除之前）自动调用。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__destruct</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="keyword">empty</span>(<span class="keyword">$this</span>-&gt;id))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"saving person\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-clone复制对象"><a href="#使用-clone复制对象" class="headerlink" title="使用__clone复制对象"></a>使用__clone复制对象</h2><ul>
+<li>在PHP中，对象的赋值和传递都是通过引用进行的；</li>
+<li>如果希望得到一个对象的完整副本，可以使用<code>clone</code>关键字；</li>
+<li>如果希望得到一个对象的部分副本，可以考虑使用<code>__clone()</code>魔术方法；</li>
+<li>如果不希望对象属性在被复制之后被共享，那么可以显示地在<code>__clone()</code>方法中复制指向的对象。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">__clone</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">$this</span>-&gt;id = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">$this</span>-&gt;account = <span class="keyword">clone</span> <span class="keyword">$this</span>-&gt;account;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="定义对象的字符串值"><a href="#定义对象的字符串值" class="headerlink" title="定义对象的字符串值"></a>定义对象的字符串值</h2><ul>
+<li>通过实现自己的<code>__toString()</code>方法，你可以控制输出字符串的格式；</li>
+<li><code>__toString()</code>方法应当返回一个字符串值。当把对象传递给<code>print</code>或<code>echo</code>时，会自动调用这个方法，并用方法的返回值来替代默认的输出内容。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getName</span> <span class="params">()</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Bob"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">getAge</span> <span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">44</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__toString</span> <span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $desc = <span class="keyword">$this</span>-&gt;getName();</span><br><span class="line">        $desc .= <span class="string">" (age"</span> . <span class="keyword">$this</span>-&gt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="回调、匿名函数和闭包"><a href="#回调、匿名函数和闭包" class="headerlink" title="回调、匿名函数和闭包"></a>回调、匿名函数和闭包</h2><ul>
+<li>利用回调，你可以在运行时将与组件的核心任务没有直接关系的功能插入到组件中。有了组件回调，你就赋予了其他人在你不知道的上下文中扩展你的代码的权利；</li>
+<li>利用<code>use</code>子句，就可以让匿名函数追踪来自其父作用域的变量。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Product</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $name;</span><br><span class="line">    <span class="keyword">public</span> $price;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">__construct</span> <span class="params">($name, $price)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;name = $name;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;price = $price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ProcessSale</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> $callbacks;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">registerCallback</span> <span class="params">($callback)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!is_callable($callback))</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="keyword">Exception</span>(<span class="string">"callback not callable"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">$this</span>-&gt;callbacks[] = $callback;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sale</span> <span class="params">($product)</span> </span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">print</span> <span class="string">"&#123;$prodct-&gt;name&#125;: processing \n"</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">foreach</span> (<span class="keyword">$this</span>-&gt;callbacks <span class="keyword">as</span> $callback)</span><br><span class="line">        &#123;</span><br><span class="line">            call_user_func($callback, $product);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------内容原创<i class="fa fa-paw"></i>转载请注明-------------</div>
+    
+</div>
+  
+</div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag"><i class="fa fa-tag"></i> 读书笔记</a>
+          
+            <a href="/tags/PHP/" rel="tag"><i class="fa fa-tag"></i> PHP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/13/the-tokyo-zodiac-murders/" rel="next" title="【占星术杀人魔法】书摘">
+                <i class="fa fa-chevron-left"></i> 【占星术杀人魔法】书摘
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/16/php-objects-patterns-and-practice-3/" rel="prev" title="【深入PHP：面向对象、模式与实践(三)】读书笔记">
+                【深入PHP：面向对象、模式与实践(三)】读书笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="HHE">
+            
+              <p class="site-author-name" itemprop="name">HHE</p>
+              <p class="site-description motion-element" itemprop="description">三日不读书，面目可憎</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hhe0" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hhe_minc@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://book.douban.com/people/122942737/" target="_blank" title="豆瓣读书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>豆瓣读书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://movie.douban.com/people/122942737/" target="_blank" title="豆瓣电影">
+                      
+                        <i class="fa fa-fw fa-globe"></i>豆瓣电影</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#静态方法和属性"><span class="nav-number">1.</span> <span class="nav-text">静态方法和属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用静态方法或属性的好处"><span class="nav-number">1.1.</span> <span class="nav-text">使用静态方法或属性的好处</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常量属性"><span class="nav-number">2.</span> <span class="nav-text">常量属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类"><span class="nav-number">3.</span> <span class="nav-text">抽象类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口"><span class="nav-number">4.</span> <span class="nav-text">接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#延迟静态绑定：static关键字"><span class="nav-number">5.</span> <span class="nav-text">延迟静态绑定：static关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#错误处理"><span class="nav-number">6.</span> <span class="nav-text">错误处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的错误处理策略"><span class="nav-number">6.1.</span> <span class="nav-text">常见的错误处理策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异常"><span class="nav-number">6.2.</span> <span class="nav-text">异常</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抛出异常"><span class="nav-number">6.2.1.</span> <span class="nav-text">抛出异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常的子类化"><span class="nav-number">6.2.2.</span> <span class="nav-text">异常的子类化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Final类和方法"><span class="nav-number">7.</span> <span class="nav-text">Final类和方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用拦截器"><span class="nav-number">8.</span> <span class="nav-text">使用拦截器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#拦截器方法"><span class="nav-number">8.1.</span> <span class="nav-text">拦截器方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#析构方法"><span class="nav-number">9.</span> <span class="nav-text">析构方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-clone复制对象"><span class="nav-number">10.</span> <span class="nav-text">使用__clone复制对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义对象的字符串值"><span class="nav-number">11.</span> <span class="nav-text">定义对象的字符串值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回调、匿名函数和闭包"><span class="nav-number">12.</span> <span class="nav-text">回调、匿名函数和闭包</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HHE</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'hhe0',
+            repo: 'hhe0.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'e96e265faa3d579b2046c7e97011c6e4fdaace2f',
+            
+                client_id: '86da837a03e3307d488e'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>

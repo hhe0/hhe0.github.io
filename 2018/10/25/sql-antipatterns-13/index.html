@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="读书笔记,SQL,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HHE" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="使用NULL来表示任意类型的悬空值。">
+<meta name="keywords" content="读书笔记,SQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL反模式(十三)：对未知的恐惧">
+<meta property="og:url" content="http://hhe0.github.io/2018/10/25/sql-antipatterns-13/index.html">
+<meta property="og:site_name" content="HHE">
+<meta property="og:description" content="使用NULL来表示任意类型的悬空值。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-07T13:25:51.006Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL反模式(十三)：对未知的恐惧">
+<meta name="twitter:description" content="使用NULL来表示任意类型的悬空值。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hhe0.github.io/2018/10/25/sql-antipatterns-13/">
+
+
+
+
+
+  <title>SQL反模式(十三)：对未知的恐惧 | HHE</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/hhe0" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HHE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhe0.github.io/2018/10/25/sql-antipatterns-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HHE">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HHE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SQL反模式(十三)：对未知的恐惧</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+          
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-25T23:03:57+08:00">
+                2018-10-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+            <span class="post-updated">
+    &nbsp; | &nbsp;              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>更新于
+    <time itemprop="dateUpdated" datetime="2019-05-07T21:25:51+08:00" content="2019-05-07">
+      2019-05-07
+    </time>
+  </span>
+
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL读书笔记系列/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL读书笔记系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/10/25/sql-antipatterns-13/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/10/25/sql-antipatterns-13/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>使用NULL来表示任意类型的悬空值。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="目标：辨别悬空值"><a href="#目标：辨别悬空值" class="headerlink" title="目标：辨别悬空值"></a>目标：辨别悬空值</h2><ul>
+<li>你可以在添加一条记录时，使用<code>NULL</code>代替哪些还不确定的值；</li>
+<li>一个给定的列如果没有合适的值，可以在对应的行中使用<code>NULL</code>；</li>
+<li>当传入参数无效时，一个函数的返回值也可以是<code>NULL</code>；</li>
+<li>在外联结查询时，<code>NULL</code>被用来当做未匹配的列的占位符。</li>
+</ul>
+<h2 id="反模式：将NULL作为普通的值，反之亦然"><a href="#反模式：将NULL作为普通的值，反之亦然" class="headerlink" title="反模式：将NULL作为普通的值，反之亦然"></a>反模式：将NULL作为普通的值，反之亦然</h2><ul>
+<li><code>SQL</code>将<code>NULL</code>当做一个特殊的值，不同于0、false或者空字符串（部分数据库例如<code>Oracle</code>可能不同）。</li>
+</ul>
+<h3 id="在表达式中使用NULL"><a href="#在表达式中使用NULL" class="headerlink" title="在表达式中使用NULL"></a>在表达式中使用NULL</h3><ul>
+<li><code>NULL</code>和0是不同的；</li>
+<li><code>NULL</code>和空字符串也是不一样的。将一个字符串和标准<code>SQL</code>中的<code>NULL</code>联合起来的结果还是<code>NULL</code>；</li>
+<li><code>NULL</code>和<code>FALSE</code>也是不同的。<code>AND</code>、<code>OR</code>和<code>NOT</code>这三个布尔操作如果涉及<code>NULL</code>，其结果要让很多人困惑。</li>
+</ul>
+<h3 id="搜索允许为空的列"><a href="#搜索允许为空的列" class="headerlink" title="搜索允许为空的列"></a>搜索允许为空的列</h3><ul>
+<li><code>WHERE</code>子句的筛选逻辑是当其条件的返回值为<code>TRUE</code>时选择该记录，但和<code>NULL</code>比较永远得不到<code>TRUE</code>，相应地，返回的是『未知』。无论比较的逻辑是相等还是不等，返回的结果还是『未知』，当然『未知』不等于<code>TRUE</code>。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 错误的比较方式</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> bugs <span class="keyword">where</span> assigned_to = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> bugs <span class="keyword">where</span> assigned_to &lt;&gt; <span class="literal">null</span>;</span><br><span class="line">// 正确的比较方式</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> bugs <span class="keyword">where</span> assigned_to <span class="keyword">is</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="在查询参数中使用NULL"><a href="#在查询参数中使用NULL" class="headerlink" title="在查询参数中使用NULL"></a>在查询参数中使用NULL</h3><ul>
+<li>在参数化的<code>SQL</code>查询表达式中使用<code>NULL</code>进行查询时，碰到使用<code>NULL</code>作为普通值的列也非常地不方便，无法将<code>NULL</code>作为参数传入。</li>
+</ul>
+<h3 id="避免上述问题"><a href="#避免上述问题" class="headerlink" title="避免上述问题"></a>避免上述问题</h3><ul>
+<li>悬空的值应该用<code>NULL</code>来表示。</li>
+</ul>
+<h2 id="如何识别反模式"><a href="#如何识别反模式" class="headerlink" title="如何识别反模式"></a>如何识别反模式</h2><ul>
+<li>我们怎么将这一列中没有值的列取出来？</li>
+<li>我能在数据库中看到用户的名字，但是在程序显示的时候，名字就是空的；</li>
+<li>这份报告中这个项目的总工作时间按仅包括了很小一部分我们设定了优先级的Bug；</li>
+<li>现在的情况是，我们不能再使用之前在表中用来表示未知的那个字符串了，因此我们要开个会讨论改用哪个新的特殊值，再评估一下开发时间以及数据转换的时间。</li>
+</ul>
+<h2 id="合理使用反模式"><a href="#合理使用反模式" class="headerlink" title="合理使用反模式"></a>合理使用反模式</h2><ul>
+<li>有一种情况可以将<code>NULL</code>视为普通值，那就是导入或者导出数据的时候；</li>
+<li>类似地，用户不能直接输入一个<code>NULL</code>。程序的输入端可能会使用一些特殊处理来引导用户输入<code>NULL</code>；</li>
+<li>如果需要支持多个不同的悬空值时，<code>NULL</code>也不起作用。</li>
+</ul>
+<h2 id="解决方案：将NULL视为特殊值"><a href="#解决方案：将NULL视为特殊值" class="headerlink" title="解决方案：将NULL视为特殊值"></a>解决方案：将NULL视为特殊值</h2><ul>
+<li>大多数使用<code>NULL</code>的问题都是源自于对<code>SQL</code>的三值逻辑的误解。</li>
+</ul>
+<h3 id="在标量表达式中使用NULL"><a href="#在标量表达式中使用NULL" class="headerlink" title="在标量表达式中使用NULL"></a>在标量表达式中使用NULL</h3><ul>
+<li><code>NULL</code>的含义表示『未知』，与『未知』运算的结果都是『未知』。</li>
+</ul>
+<h3 id="在布尔表达式中使用NULL"><a href="#在布尔表达式中使用NULL" class="headerlink" title="在布尔表达式中使用NULL"></a>在布尔表达式中使用NULL</h3><ul>
+<li><code>NULL</code>既不是<code>TRUE</code>也不是<code>FALSE</code>。</li>
+</ul>
+<h3 id="检索NULL值"><a href="#检索NULL值" class="headerlink" title="检索NULL值"></a>检索NULL值</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> bugs <span class="keyword">where</span> assigned_to <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> bugs <span class="keyword">where</span> assigned_to <span class="keyword">is</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="声明NOT-NULL的列"><a href="#声明NOT-NULL的列" class="headerlink" title="声明NOT NULL的列"></a>声明NOT NULL的列</h3><ul>
+<li>对于一个在逻辑上没有默认值的列来说，声明一个<code>NOT NULL</code>约束时很合理、很常见的。</li>
+</ul>
+<h3 id="动态默认值"><a href="#动态默认值" class="headerlink" title="动态默认值"></a>动态默认值</h3><ul>
+<li>在特定的请求时对一个给定的列临时设置一个默认值的方法。<code>Mysql</code>中存在<code>ISNULL</code>函数实现这个功能。</li>
+</ul>
+<hr>
+<p>相关笔记<br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns/" target="_blank" rel="noopener">SQL反模式(一)：乱穿马路</a><br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns-2/" target="_blank" rel="noopener">SQL反模式(二)：单纯的树</a><br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns-3/" target="_blank" rel="noopener">SQL反模式(三)：需要ID</a><br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns-4/" target="_blank" rel="noopener">SQL反模式(四)：不用钥匙的入口</a><br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns-5/" target="_blank" rel="noopener">SQL反模式(五)：实体-属性-值</a><br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns-6/" target="_blank" rel="noopener">SQL反模式(六)：多态关联</a><br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns-7/" target="_blank" rel="noopener">SQL反模式(七)：多列属性</a><br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns-8/" target="_blank" rel="noopener">SQL反模式(八)：元数据分裂</a><br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns-9/" target="_blank" rel="noopener">SQL反模式(九)：取整错误</a><br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns-10/" target="_blank" rel="noopener">SQL反模式(十)：每日新花样</a><br><a href="https://hhe0.github.io/2018/10/23/sql-antipatterns-11/" target="_blank" rel="noopener">SQL反模式(十一)：幽灵文件</a><br><a href="https://hhe0.github.io/2018/10/25/sql-antipatterns-12/" target="_blank" rel="noopener">SQL反模式(十二)：乱用索引</a><br><a href="https://hhe0.github.io/2018/10/25/sql-antipatterns-13/" target="_blank" rel="noopener">SQL反模式(十三)：对未知的恐惧</a><br><a href="https://hhe0.github.io/2018/10/25/sql-antipatterns-14/" target="_blank" rel="noopener">SQL反模式(十四)：模棱两可的分组</a><br><a href="https://hhe0.github.io/2018/10/25/sql-antipatterns-15/" target="_blank" rel="noopener">SQL反模式(十五)：随机选择</a><br><a href="https://hhe0.github.io/2018/10/25/sql-antipatterns-16/" target="_blank" rel="noopener">SQL反模式(十六)：可怜人的搜索引擎</a><br><a href="https://hhe0.github.io/2018/10/25/sql-antipatterns-17/" target="_blank" rel="noopener">SQL反模式(十七)：意大利面条式查询</a><br><a href="https://hhe0.github.io/2018/10/25/sql-antipatterns-18/" target="_blank" rel="noopener">SQL反模式(十八)：隐式地列</a><br><a href="https://hhe0.github.io/2018/10/27/sql-antipatterns-19/" target="_blank" rel="noopener">SQL反模式(十九)：明文密码</a><br><a href="https://hhe0.github.io/2018/10/27/sql-antipatterns-20/" target="_blank" rel="noopener">SQL反模式(二十)：SQL注入</a><br><a href="https://hhe0.github.io/2018/10/27/sql-antipatterns-21/" target="_blank" rel="noopener">SQL反模式(二十一)：伪键洁癖</a><br><a href="https://hhe0.github.io/2018/10/27/sql-antipatterns-22/" target="_blank" rel="noopener">SQL反模式(二十二)：非礼勿视</a><br><a href="https://hhe0.github.io/2018/10/27/sql-antipatterns-23/" target="_blank" rel="noopener">SQL反模式(二十三)：外交豁免权</a><br><a href="https://hhe0.github.io/2018/10/27/sql-antipatterns-24/" target="_blank" rel="noopener">SQL反模式(二十四)：魔豆</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------内容原创<i class="fa fa-paw"></i>转载请注明-------------</div>
+    
+</div>
+  
+</div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag"><i class="fa fa-tag"></i> 读书笔记</a>
+          
+            <a href="/tags/SQL/" rel="tag"><i class="fa fa-tag"></i> SQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/25/sql-antipatterns-12/" rel="next" title="SQL反模式(十二)：乱用索引">
+                <i class="fa fa-chevron-left"></i> SQL反模式(十二)：乱用索引
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/25/sql-antipatterns-14/" rel="prev" title="SQL反模式(十四)：模棱两可的分组">
+                SQL反模式(十四)：模棱两可的分组 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="HHE">
+            
+              <p class="site-author-name" itemprop="name">HHE</p>
+              <p class="site-description motion-element" itemprop="description">三日不读书，面目可憎</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hhe0" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hhe_minc@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://book.douban.com/people/122942737/" target="_blank" title="豆瓣读书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>豆瓣读书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://movie.douban.com/people/122942737/" target="_blank" title="豆瓣电影">
+                      
+                        <i class="fa fa-fw fa-globe"></i>豆瓣电影</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目标：辨别悬空值"><span class="nav-number">1.</span> <span class="nav-text">目标：辨别悬空值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#反模式：将NULL作为普通的值，反之亦然"><span class="nav-number">2.</span> <span class="nav-text">反模式：将NULL作为普通的值，反之亦然</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在表达式中使用NULL"><span class="nav-number">2.1.</span> <span class="nav-text">在表达式中使用NULL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#搜索允许为空的列"><span class="nav-number">2.2.</span> <span class="nav-text">搜索允许为空的列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在查询参数中使用NULL"><span class="nav-number">2.3.</span> <span class="nav-text">在查询参数中使用NULL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#避免上述问题"><span class="nav-number">2.4.</span> <span class="nav-text">避免上述问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何识别反模式"><span class="nav-number">3.</span> <span class="nav-text">如何识别反模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#合理使用反模式"><span class="nav-number">4.</span> <span class="nav-text">合理使用反模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方案：将NULL视为特殊值"><span class="nav-number">5.</span> <span class="nav-text">解决方案：将NULL视为特殊值</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在标量表达式中使用NULL"><span class="nav-number">5.1.</span> <span class="nav-text">在标量表达式中使用NULL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在布尔表达式中使用NULL"><span class="nav-number">5.2.</span> <span class="nav-text">在布尔表达式中使用NULL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检索NULL值"><span class="nav-number">5.3.</span> <span class="nav-text">检索NULL值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#声明NOT-NULL的列"><span class="nav-number">5.4.</span> <span class="nav-text">声明NOT NULL的列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态默认值"><span class="nav-number">5.5.</span> <span class="nav-text">动态默认值</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HHE</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'hhe0',
+            repo: 'hhe0.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'e96e265faa3d579b2046c7e97011c6e4fdaace2f',
+            
+                client_id: '86da837a03e3307d488e'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>

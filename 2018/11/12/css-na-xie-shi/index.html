@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="读书笔记,CSS,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HHE" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="所谓的CSS，是由W3C(万维网联盟)的CSS工作组创建和维护的，不需要编译，增强控制网页样式并允许将样式信息与网页内容分离，是可以直接由浏览器执行的一种标记性语言，或者说它是一种浏览器解释性语言。">
+<meta name="keywords" content="读书笔记,CSS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS那些事(一)：花落知多少——CSS正传">
+<meta property="og:url" content="http://hhe0.github.io/2018/11/12/css-na-xie-shi/index.html">
+<meta property="og:site_name" content="HHE">
+<meta property="og:description" content="所谓的CSS，是由W3C(万维网联盟)的CSS工作组创建和维护的，不需要编译，增强控制网页样式并允许将样式信息与网页内容分离，是可以直接由浏览器执行的一种标记性语言，或者说它是一种浏览器解释性语言。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-07T13:25:50.998Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS那些事(一)：花落知多少——CSS正传">
+<meta name="twitter:description" content="所谓的CSS，是由W3C(万维网联盟)的CSS工作组创建和维护的，不需要编译，增强控制网页样式并允许将样式信息与网页内容分离，是可以直接由浏览器执行的一种标记性语言，或者说它是一种浏览器解释性语言。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://hhe0.github.io/2018/11/12/css-na-xie-shi/">
+
+
+
+
+
+  <title>CSS那些事(一)：花落知多少——CSS正传 | HHE</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+<a href="https://github.com/hhe0" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HHE</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhe0.github.io/2018/11/12/css-na-xie-shi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HHE">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HHE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSS那些事(一)：花落知多少——CSS正传</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+          
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-12T19:06:06+08:00">
+                2018-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+            <span class="post-updated">
+    &nbsp; | &nbsp;              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>更新于
+    <time itemprop="dateUpdated" datetime="2019-05-07T21:25:50+08:00" content="2019-05-07">
+      2019-05-07
+    </time>
+  </span>
+
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CSS读书笔记系列/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS读书笔记系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/11/12/css-na-xie-shi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2018/11/12/css-na-xie-shi/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-eye"></i> 阅读次数
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>所谓的<code>CSS</code>，是由<code>W3C</code>(万维网联盟)的<code>CSS</code>工作组创建和维护的，不需要编译，增强控制网页样式并允许将样式信息与网页内容分离，是可以直接由浏览器执行的一种标记性语言，或者说它是一种浏览器解释性语言。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="网页美容师——认识CSS"><a href="#网页美容师——认识CSS" class="headerlink" title="网页美容师——认识CSS"></a>网页美容师——认识CSS</h2><h3 id="CSS的作用"><a href="#CSS的作用" class="headerlink" title="CSS的作用"></a>CSS的作用</h3><ul>
+<li>修饰页面文本、图片等页面元素，避免使用不必要的<code>HTML</code>元素；</li>
+<li>更有效地控制页面结构、页面布局；</li>
+<li>提高开发和维护效率。</li>
+</ul>
+<h3 id="CSS的基本结构"><a href="#CSS的基本结构" class="headerlink" title="CSS的基本结构"></a>CSS的基本结构</h3><ul>
+<li>选择符：告诉浏览器该样式将匹配于页面中的哪些对象；</li>
+<li>声明：告诉浏览器怎样去渲染页面中的与选择符相匹配的对象；</li>
+<li>属性：以一个单词的形式出现，并且都是<code>CSS</code>约定的而不是自定义的；</li>
+<li>属性值：取决于属性。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">selector</span> &#123;</span><br><span class="line">    <span class="attribute">property</span>: value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="CSS结构的特点"><a href="#CSS结构的特点" class="headerlink" title="CSS结构的特点"></a>CSS结构的特点</h4><ul>
+<li>声明都是紧跟着选择符，并被花括号包含着；</li>
+<li>每个声明的属性跟属性值之间都是用冒号隔开、分号结束的；</li>
+<li>花括号及分号前后的空格可有可无；</li>
+<li>属性值名称过长并带有空格，一定要将属性值用引号包含，如”sans serif”。</li>
+</ul>
+<h3 id="CSS中的注释"><a href="#CSS中的注释" class="headerlink" title="CSS中的注释"></a>CSS中的注释</h3><ul>
+<li>提倡合理使用<code>CSS</code>注释，但过度使用将适得其反，使<code>CSS</code>文件增多不必要的字节。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 注释放在这里，注释中不要出现星号，防止浏览器解析错误 */</span></span><br></pre></td></tr></table></figure>
+<h3 id="CSS的简写"><a href="#CSS的简写" class="headerlink" title="CSS的简写"></a>CSS的简写</h3><h4 id="颜色的缩写"><a href="#颜色的缩写" class="headerlink" title="颜色的缩写"></a>颜色的缩写</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">// 十六进制形式</span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>: <span class="number">#FF00FF</span>;&#125;</span><br><span class="line">只能对该形式进行缩写为：<span class="selector-tag">p</span> &#123;<span class="attribute">color</span>: <span class="number">#F0F</span>&#125;;</span><br><span class="line"></span><br><span class="line">// RGB形式</span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>: <span class="built_in">RGB</span>(125, 0, 255);&#125;</span><br><span class="line"></span><br><span class="line">// 百分数形式</span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>: <span class="built_in">RGB</span>(25%, 0%, 100%);&#125;</span><br><span class="line"></span><br><span class="line">// 颜色名称</span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>: red;&#125;</span><br><span class="line"></span><br><span class="line">// 用户系统色盘值</span><br><span class="line"><span class="selector-tag">p</span> &#123;<span class="attribute">color</span>: windowtext; <span class="attribute">background-color</span>: background;&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="单位值的省略"><a href="#单位值的省略" class="headerlink" title="单位值的省略"></a>单位值的省略</h4><ul>
+<li>当数值为0时，所有形式的单位都可以省略。</li>
+</ul>
+<h4 id="内外补丁的简写"><a href="#内外补丁的简写" class="headerlink" title="内外补丁的简写"></a>内外补丁的简写</h4><ul>
+<li>内补丁(padding)和外补丁(margin)声明时如果没有第三个(bottom)、第四个参数(left)时，则会参照对应的第一个(top)、第二个参数(right)。</li>
+</ul>
+<h4 id="边框的简写"><a href="#边框的简写" class="headerlink" title="边框的简写"></a>边框的简写</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">border-style</span>: solid;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#F00</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 简写形式</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#F00</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 定义四个方向的不同样式缩写</span><br><span class="line"><span class="selector-tag">div</span> &#123;</span><br><span class="line">    <span class="attribute">border-width</span>: <span class="number">1px</span>;</span><br><span class="line">    <span class="attribute">border-style</span>: solid dashed double;</span><br><span class="line">    <span class="attribute">border-color</span>: </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="背景的简写"><a href="#背景的简写" class="headerlink" title="背景的简写"></a>背景的简写</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    background-color: #F00; // 默认为transparent</span><br><span class="line">    background-image: url(background.gif); // 默认为none</span><br><span class="line">    background-repeat: no-repeat; // 默认为repeat</span><br><span class="line">    background-attachment: fixed; // scroll</span><br><span class="line">    background-position: 0 0; // 默认为 0% 0%</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 简写形式</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#F00</span> <span class="built_in">url</span>(background.gif) no-repeat fixed <span class="number">0</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="字体的简写"><a href="#字体的简写" class="headerlink" title="字体的简写"></a>字体的简写</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    font-style: italic; // 默认为normal</span><br><span class="line">    font-variant: small-caps; // 默认为normal</span><br><span class="line">    font-weight: bold; // 默认为normal</span><br><span class="line">    font-size: 12px; // 默认为medium</span><br><span class="line">    line-height: 140%; // 默认为normal</span><br><span class="line">    font-family: "Lucida Grande", sans-serif; // 默认为"Times New Roman"</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 简写形式</span><br><span class="line">// font-size和font-family必须显式指定</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">font</span>: italic small-caps bold <span class="number">12px</span>/<span class="number">140%</span> <span class="string">"Lucida Grande"</span>,sans-serif;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="表的简写"><a href="#表的简写" class="headerlink" title="表的简写"></a>表的简写</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">    list-style-type: square; // 默认为disc</span><br><span class="line">    list-style-position: inside; // 默认为outside</span><br><span class="line">    list-style-image: url(image.gif); // m默认为none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 简写形式</span><br><span class="line">// 对于`list-style`的预设列表项在实际中通常是以图片代替的，图片不是用`list-style-image`属性实现的，而是用`background`背景属性来实现的。前提是需要设置列表的`list-style: none`属性。</span><br><span class="line"><span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">list-type</span>: <span class="built_in">url</span>(image.gif) inside square;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="网页勾魂八计——掌握CSS选择符"><a href="#网页勾魂八计——掌握CSS选择符" class="headerlink" title="网页勾魂八计——掌握CSS选择符"></a>网页勾魂八计——掌握CSS选择符</h2><h3 id="通配符选择符"><a href="#通配符选择符" class="headerlink" title="通配符选择符"></a>通配符选择符</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> * &#123;</span><br><span class="line">    color: #F00; // 对p的所有后代元素应用样式</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="类选择符"><a href="#类选择符" class="headerlink" title="类选择符"></a>类选择符</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.myContent</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: none;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#00F</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="包含选择符"><a href="#包含选择符" class="headerlink" title="包含选择符"></a>包含选择符</h3><ul>
+<li>又称为<code>派生选择符</code>或者<code>后代选择符</code>。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 定义p标签所包含的span标签元素的样式</span><br><span class="line"><span class="selector-tag">p</span> <span class="selector-tag">strong</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#F00</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="子选择符"><a href="#子选择符" class="headerlink" title="子选择符"></a>子选择符</h3><ul>
+<li>并非所有浏览器都支持；</li>
+<li>定义的是<code>直接子元素</code>的样式。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &gt; <span class="selector-tag">strong</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#F00</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="相邻选择符"><a href="#相邻选择符" class="headerlink" title="相邻选择符"></a>相邻选择符</h3><ul>
+<li>定义的样式是紧紧相邻的两个标签元素，且二者有相同的父元素。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 定义与p标签相邻的strong标签</span><br><span class="line"><span class="selector-tag">p</span> + <span class="selector-tag">strong</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#F00</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="属性选择符"><a href="#属性选择符" class="headerlink" title="属性选择符"></a>属性选择符</h3><ul>
+<li>属性选择符并不是所有浏览器都支持。<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">// E[attr]形式</span><br><span class="line">* <span class="selector-attr">[class]</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#F00</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// E[attr="value"]</span><br><span class="line"><span class="selector-tag">input</span><span class="selector-attr">[type="text"]</span> &#123;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#F00</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#E8E8E8</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// E[attr ~= "value"]</span><br><span class="line">// 匹配具有"attr"属性且属性值是具有空格符号隔开的字段，其中一个字段等于value的E标签元素</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[title~="css"]</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#F00</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// E[attr |= "value"]</span><br><span class="line">// 匹配具有"attr"属性且属性值必须是以value值开始及使用连字符(-)分隔的E标签元素</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-attr">[title|="css"]</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#F00</span>;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ID选择符"><a href="#ID选择符" class="headerlink" title="ID选择符"></a>ID选择符</h3><ul>
+<li>一个页面不要建议不要使用同名<code>ID</code>，避免出现<code>JS</code>错误。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#myContent</span> &#123;</span><br><span class="line">    <span class="attribute">font-weight</span>: bold;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#00F</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择符的组合关系"><a href="#选择符的组合关系" class="headerlink" title="选择符的组合关系"></a>选择符的组合关系</h3><ul>
+<li>针对性使用类选择符/ID选择符、选择符群组及选择符组合。</li>
+</ul>
+<h4 id="针对性使用类选择符-ID选择符"><a href="#针对性使用类选择符-ID选择符" class="headerlink" title="针对性使用类选择符/ID选择符"></a>针对性使用类选择符/ID选择符</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.myContent</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">12px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 定义类名为myContent的段落标签p的样式</span><br><span class="line"><span class="selector-tag">p</span> <span class="selector-class">.myContent</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: underline;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#F00</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">p</span> <span class="selector-id">#myContent</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#F00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="选择符群组"><a href="#选择符群组" class="headerlink" title="选择符群组"></a>选择符群组</h4><ul>
+<li>选择符之间的关系为并列关系。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>. <span class="selector-class">.myContent</span>, <span class="selector-id">#title</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#F00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="选择符组合"><a href="#选择符组合" class="headerlink" title="选择符组合"></a>选择符组合</h4><ul>
+<li>选择符之间的组合为递进关系；</li>
+<li>目标选择符为最后一个选择符。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span> <span class="selector-tag">span</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#F00</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="莫须有？——伪类与伪对象"><a href="#莫须有？——伪类与伪对象" class="headerlink" title="莫须有？——伪类与伪对象"></a>莫须有？——伪类与伪对象</h2><h3 id="伪类"><a href="#伪类" class="headerlink" title="伪类"></a>伪类</h3><ul>
+<li><code>伪类</code>可以让用户在使用页面的过程中增加更多交互效果，而不必去使用过多的<code>JS</code>来辅助完成。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:link</span> &#123;<span class="attribute">color</span>: red;&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:visited</span> &#123;<span class="attribute">color</span>: blue;&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:hover</span> &#123;<span class="attribute">color</span>: green;&#125;</span><br><span class="line"><span class="selector-tag">a</span><span class="selector-pseudo">:active</span> &#123;<span class="attribute">color</span>: black;&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="伪对象"><a href="#伪对象" class="headerlink" title="伪对象"></a>伪对象</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:before</span> &#123;<span class="attribute">content</span>: <span class="string">"4月1日，"</span>;&#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-pseudo">:after</span> &#123;<span class="attribute">content</span>: <span class="string">"大家小心，不要被骗了！"</span>;&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="剪不断理还乱——善处选择符之间的关系"><a href="#剪不断理还乱——善处选择符之间的关系" class="headerlink" title="剪不断理还乱——善处选择符之间的关系"></a>剪不断理还乱——善处选择符之间的关系</h2><h3 id="选择符的覆盖"><a href="#选择符的覆盖" class="headerlink" title="选择符的覆盖"></a>选择符的覆盖</h3><ul>
+<li>常用于在样式中将所有标签的内外补丁定义为0，然后根据实际页面需求而再次定义内外补丁的间距。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 覆盖定义</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="选择符z的继承"><a href="#选择符z的继承" class="headerlink" title="选择符z的继承"></a>选择符z的继承</h3><ul>
+<li>子承父业，但是并不是所有的后代标签都会继承父级元素的<code>CSS</code>属性；</li>
+<li>听起来有点像嫌疑人X的献身2333。</li>
+</ul>
+<h3 id="选择符的权重值优先级别"><a href="#选择符的权重值优先级别" class="headerlink" title="选择符的权重值优先级别"></a>选择符的权重值优先级别</h3><h4 id="CSS的优先级"><a href="#CSS的优先级" class="headerlink" title="CSS的优先级"></a>CSS的优先级</h4><ul>
+<li>标有<code>!important</code>关键字声明的属性；</li>
+<li><code>HTML</code>中的<code>CSS</code>样式属性；</li>
+<li>作者编辑的<code>CSS</code>文件样式属性。以选择符的组合方式来决定优先级别，相同的选择符组合方式将根据作者定义<code>CSS</code>样式的先后次序而决定优先级别；</li>
+<li>用户设置的样式；</li>
+<li>浏览器默认的样式。</li>
+</ul>
+<h4 id="选择符的优先级"><a href="#选择符的优先级" class="headerlink" title="选择符的优先级"></a>选择符的优先级</h4><ul>
+<li>标签选择符、伪类及伪对象：优先级积分为1；</li>
+<li>类选择符、属性选择符：优先级积分为10；</li>
+<li>ID选择符：优先级积分为100；</li>
+<li>style属性：优先级积分为1000；</li>
+<li>其他选择符，如通配符选择符等：优先级积分为0；</li>
+<li>根据以上优先级积分，统计<code>CSS</code>样式表中出现的每个选择符个数，再相加，最终得出的积分数就是某个选择符的优先级别。</li>
+</ul>
+<h2 id="英雄救美——让CSS拯救HTML"><a href="#英雄救美——让CSS拯救HTML" class="headerlink" title="英雄救美——让CSS拯救HTML"></a>英雄救美——让CSS拯救HTML</h2><h3 id="把CSS引入到HTML页面中"><a href="#把CSS引入到HTML页面中" class="headerlink" title="把CSS引入到HTML页面中"></a>把CSS引入到HTML页面中</h3><ul>
+<li>直接写在标签元素的属性style中，通常称为<code>行间样式</code>；</li>
+<li>将样式写在<style></style>标签之内，通常称为<code>内嵌样式表</code>；</li>
+<li>通过<link>方式外链<code>CSS</code>样式文件，通常称为<code>外联样式表</code>；</li>
+<li>通过@import关键字导入外部<code>CSS</code>样式文件，通常称为<code>导入样式表</code>。</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;body style="background: red;"&gt;&lt;/body&gt;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">body</span> &#123;<span class="attribute">background</span>: red;&#125;</span><br><span class="line"></span><br><span class="line">&lt;link rel="stylesheet" href="css/mycss.css" type="text/css" media="all" /&gt;</span><br><span class="line"></span><br><span class="line">// 导入样式表必须放在样式表的最前面，不建议使用导入样式表的方式，而是使用外联样式表的方式</span><br><span class="line">@<span class="keyword">import</span> url(<span class="string">"base.css"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="样式表的规划与维护管理"><a href="#样式表的规划与维护管理" class="headerlink" title="样式表的规划与维护管理"></a>样式表的规划与维护管理</h3><ul>
+<li>一般分为<code>页面的全局定义</code>及<code>处理页面基本布局的CSS样式文件</code>和处理细节方面的CSS样式文件；</li>
+<li>一般选择一个大型的<code>CSS</code>文件而不是多个<code>CSS</code>小文件；</li>
+<li>未发布站点前的注释可以在正式发布后进行删除。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------内容原创<i class="fa fa-paw"></i>转载请注明-------------</div>
+    
+</div>
+  
+</div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/读书笔记/" rel="tag"><i class="fa fa-tag"></i> 读书笔记</a>
+          
+            <a href="/tags/CSS/" rel="tag"><i class="fa fa-tag"></i> CSS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/04/ai-de-cheng-ren-shi/" rel="next" title="【爱的成人式】书摘">
+                <i class="fa fa-chevron-left"></i> 【爱的成人式】书摘
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/12/css-na-xie-shi-2/" rel="prev" title="CSS那些事儿(二)：简单也是复杂的——从一个简单页面布局说起">
+                CSS那些事儿(二)：简单也是复杂的——从一个简单页面布局说起 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      
+        <div onclick="showGitment()" id="gitment-display-button">显示 Gitment 评论</div>
+        <div id="gitment-container" style="display:none"></div>
+      
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="HHE">
+            
+              <p class="site-author-name" itemprop="name">HHE</p>
+              <p class="site-description motion-element" itemprop="description">三日不读书，面目可憎</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hhe0" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:hhe_minc@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://book.douban.com/people/122942737/" target="_blank" title="豆瓣读书">
+                      
+                        <i class="fa fa-fw fa-globe"></i>豆瓣读书</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://movie.douban.com/people/122942737/" target="_blank" title="豆瓣电影">
+                      
+                        <i class="fa fa-fw fa-globe"></i>豆瓣电影</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#网页美容师——认识CSS"><span class="nav-number">1.</span> <span class="nav-text">网页美容师——认识CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS的作用"><span class="nav-number">1.1.</span> <span class="nav-text">CSS的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS的基本结构"><span class="nav-number">1.2.</span> <span class="nav-text">CSS的基本结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS结构的特点"><span class="nav-number">1.2.1.</span> <span class="nav-text">CSS结构的特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS中的注释"><span class="nav-number">1.3.</span> <span class="nav-text">CSS中的注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS的简写"><span class="nav-number">1.4.</span> <span class="nav-text">CSS的简写</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#颜色的缩写"><span class="nav-number">1.4.1.</span> <span class="nav-text">颜色的缩写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单位值的省略"><span class="nav-number">1.4.2.</span> <span class="nav-text">单位值的省略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内外补丁的简写"><span class="nav-number">1.4.3.</span> <span class="nav-text">内外补丁的简写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#边框的简写"><span class="nav-number">1.4.4.</span> <span class="nav-text">边框的简写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#背景的简写"><span class="nav-number">1.4.5.</span> <span class="nav-text">背景的简写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字体的简写"><span class="nav-number">1.4.6.</span> <span class="nav-text">字体的简写</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表的简写"><span class="nav-number">1.4.7.</span> <span class="nav-text">表的简写</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网页勾魂八计——掌握CSS选择符"><span class="nav-number">2.</span> <span class="nav-text">网页勾魂八计——掌握CSS选择符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通配符选择符"><span class="nav-number">2.1.</span> <span class="nav-text">通配符选择符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类选择符"><span class="nav-number">2.2.</span> <span class="nav-text">类选择符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#包含选择符"><span class="nav-number">2.3.</span> <span class="nav-text">包含选择符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子选择符"><span class="nav-number">2.4.</span> <span class="nav-text">子选择符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#相邻选择符"><span class="nav-number">2.5.</span> <span class="nav-text">相邻选择符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性选择符"><span class="nav-number">2.6.</span> <span class="nav-text">属性选择符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ID选择符"><span class="nav-number">2.7.</span> <span class="nav-text">ID选择符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择符的组合关系"><span class="nav-number">2.8.</span> <span class="nav-text">选择符的组合关系</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#针对性使用类选择符-ID选择符"><span class="nav-number">2.8.1.</span> <span class="nav-text">针对性使用类选择符/ID选择符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择符群组"><span class="nav-number">2.8.2.</span> <span class="nav-text">选择符群组</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择符组合"><span class="nav-number">2.8.3.</span> <span class="nav-text">选择符组合</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#莫须有？——伪类与伪对象"><span class="nav-number">3.</span> <span class="nav-text">莫须有？——伪类与伪对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#伪类"><span class="nav-number">3.1.</span> <span class="nav-text">伪类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#伪对象"><span class="nav-number">3.2.</span> <span class="nav-text">伪对象</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剪不断理还乱——善处选择符之间的关系"><span class="nav-number">4.</span> <span class="nav-text">剪不断理还乱——善处选择符之间的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择符的覆盖"><span class="nav-number">4.1.</span> <span class="nav-text">选择符的覆盖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择符z的继承"><span class="nav-number">4.2.</span> <span class="nav-text">选择符z的继承</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择符的权重值优先级别"><span class="nav-number">4.3.</span> <span class="nav-text">选择符的权重值优先级别</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS的优先级"><span class="nav-number">4.3.1.</span> <span class="nav-text">CSS的优先级</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#选择符的优先级"><span class="nav-number">4.3.2.</span> <span class="nav-text">选择符的优先级</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#英雄救美——让CSS拯救HTML"><span class="nav-number">5.</span> <span class="nav-text">英雄救美——让CSS拯救HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#把CSS引入到HTML页面中"><span class="nav-number">5.1.</span> <span class="nav-text">把CSS引入到HTML页面中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样式表的规划与维护管理"><span class="nav-number">5.2.</span> <span class="nav-text">样式表的规划与维护管理</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">HHE</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count"></span>
+  
+</div>
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 总访问量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+      <style>
+        a.gitment-editor-footer-tip { display: none; }
+        .gitment-container.gitment-footer-container { display: none; }
+      </style>
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname, 
+            owner: 'hhe0',
+            repo: 'hhe0.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'e96e265faa3d579b2046c7e97011c6e4fdaace2f',
+            
+                client_id: '86da837a03e3307d488e'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      function showGitment(){
+        document.getElementById("gitment-display-button").style.display = "none";
+        document.getElementById("gitment-container").style.display = "block";
+        renderGitment();
+      }
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+
+  
+<script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+</body>
+</html>
