@@ -286,6 +286,225 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://hhe0.github.io/2019/06/13/mysql-alter-table/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HHE">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HHE">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/13/mysql-alter-table/" itemprop="url">mysql 的 alter table 命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+          
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T14:30:47+08:00">
+                2019-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+            <span class="post-updated">
+    &nbsp; | &nbsp;              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>更新于
+    <time itemprop="dateUpdated" datetime="2019-06-13T15:04:20+08:00" content="2019-06-13">
+      2019-06-13
+    </time>
+  </span>
+
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Mysql随笔系列/" itemprop="url" rel="index">
+                    <span itemprop="name">Mysql随笔系列</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p> 说起来 alter table 在日常工作中也是一个十分常见的命令了，可是每次使用的时候总是忘记，甚至最后变得有些模糊了，今天抽时间记录在这里方便查阅~</p>
+</blockquote>
+<h3 id="一、建表"><a href="#一、建表" class="headerlink" title="一、建表"></a>一、建表</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`password_info`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`project`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'项目'</span>,</span><br><span class="line">  <span class="string">`account`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'账号'</span>,</span><br><span class="line">  <span class="string">`password`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'密码原文'</span>,</span><br><span class="line">  <span class="string">`create_time`</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'创建时间'</span>,</span><br><span class="line">  <span class="string">`update_time`</span> <span class="built_in">int</span>(<span class="number">10</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'更新时间'</span>,</span><br><span class="line">  <span class="string">`is_deleted`</span> <span class="built_in">tinyint</span>(<span class="number">1</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">'0'</span> <span class="keyword">COMMENT</span> <span class="string">'是否删除 0:否 1:是'</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">5</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8 <span class="keyword">COMMENT</span>=<span class="string">'密码表'</span></span><br></pre></td></tr></table></figure>
+<p>从自己的数据库里面随便扒了一张表下来用于演示。</p>
+<h3 id="二、修改表名"><a href="#二、修改表名" class="headerlink" title="二、修改表名"></a>二、修改表名</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">rename</span> <span class="string">`password_info_test`</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>这个命令平常并不常用，一般表名定义好了就不会轻易动它。主要也会影响一些程序的逻辑代码。</li>
+</ul>
+<h3 id="三、新增表字段"><a href="#三、新增表字段" class="headerlink" title="三、新增表字段"></a>三、新增表字段</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">add</span> <span class="keyword">column</span> <span class="string">`new_column`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">DEFAULT</span> <span class="string">''</span> <span class="keyword">COMMENT</span> <span class="string">'这是一个新列'</span> <span class="keyword">after</span> <span class="string">`password`</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>在新增字段的时候强烈建议使用 <code>after</code> 指定具体的位置。</li>
+</ul>
+<h3 id="四、修改表字段"><a href="#四、修改表字段" class="headerlink" title="四、修改表字段"></a>四、修改表字段</h3><h4 id="修改字段类型"><a href="#修改字段类型" class="headerlink" title="修改字段类型"></a>修改字段类型</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">modify</span> <span class="keyword">column</span> <span class="string">`new_column`</span> <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'这是一个新列'</span> <span class="keyword">after</span> <span class="string">`password`</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>把 <code>new_column</code> 的类型从 <code>varchar(255)</code> 修改为了 <code>text</code>，这里要注意一些 <code>text</code>不允许有默认值。</li>
+</ul>
+<h4 id="修改字段顺序"><a href="#修改字段顺序" class="headerlink" title="修改字段顺序"></a>修改字段顺序</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">modify</span> <span class="keyword">column</span> <span class="string">`new_column`</span> <span class="built_in">text</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'这是一个新列'</span> <span class="keyword">after</span> <span class="string">`id`</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>其实基本没有区别。</li>
+</ul>
+<h4 id="修改字段默认值"><a href="#修改字段默认值" class="headerlink" title="修改字段默认值"></a>修改字段默认值</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 设置/修改默认值</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">alter</span> <span class="keyword">column</span> <span class="string">`new_column`</span> <span class="keyword">set</span> <span class="keyword">default</span> <span class="string">'new column'</span> ;</span><br><span class="line">// 删除默认值</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">alter</span> <span class="keyword">column</span> <span class="string">`new_column`</span> <span class="keyword">drop</span> <span class="keyword">default</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改字段默认值的语法比较特殊，应格外注意。</li>
+</ul>
+<h4 id="修改字段名称"><a href="#修改字段名称" class="headerlink" title="修改字段名称"></a>修改字段名称</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">change</span> <span class="keyword">column</span> <span class="string">`new_column`</span> <span class="string">`new_column_modify`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">COMMENT</span> <span class="string">'这是一个修改后的新列'</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="五、删除表字段"><a href="#五、删除表字段" class="headerlink" title="五、删除表字段"></a>五、删除表字段</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">drop</span> <span class="keyword">column</span> <span class="string">`new_column_modify`</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="六、添加索引"><a href="#六、添加索引" class="headerlink" title="六、添加索引"></a>六、添加索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 普通索引</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">add</span> <span class="keyword">key</span> <span class="string">`idx_project`</span> (<span class="string">`project`</span>)</span><br><span class="line">// 唯一索引</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">add</span> <span class="keyword">unique</span> <span class="keyword">key</span> <span class="string">`idx_password`</span> (<span class="string">`password`</span>)</span><br><span class="line">// 全文索引</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">add</span> fulltext <span class="keyword">key</span> <span class="string">`idx_account`</span> (<span class="string">`account`</span>)</span><br><span class="line">// 主键索引</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">add</span> primary <span class="keyword">key</span> (<span class="string">`id`</span>)</span><br><span class="line">// 组合索引</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">add</span> <span class="keyword">key</span> <span class="string">`idx_account_password`</span> (<span class="string">`account`</span>, <span class="string">`password`</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="七、删除索引"><a href="#七、删除索引" class="headerlink" title="七、删除索引"></a>七、删除索引</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> password_info <span class="keyword">drop</span> <span class="keyword">index</span> <span class="string">`idx_project`</span></span><br></pre></td></tr></table></figure>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
+<li><code>alter table change</code> 和 <code>alter table modify</code> 的区别？</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    <div>
+  
+</div>
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://hhe0.github.io/2019/01/27/automate-the-boring-stuff-with-python-10/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2019,200 +2238,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://hhe0.github.io/2019/01/12/automate-the-boring-stuff-with-python-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HHE">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="HHE">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/12/automate-the-boring-stuff-with-python-3/" itemprop="url">【Python编程快速上手(三)】</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-          
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-12T22:51:17+08:00">
-                2019-01-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-            <span class="post-updated">
-    &nbsp; | &nbsp;              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>更新于
-    <time itemprop="dateUpdated" datetime="2019-05-07T21:25:50+08:00" content="2019-05-07">
-      2019-05-07
-    </time>
-  </span>
-
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python读书笔记系列/" itemprop="url" rel="index">
-                    <span itemprop="name">Python读书笔记系列</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote>
-<p>函数就像是一个程序内的小程序。 </p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/01/12/automate-the-boring-stuff-with-python-3/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    <div>
-  
-</div>
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2265,7 +2290,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">114</span>
+                  <span class="site-state-item-count">115</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
