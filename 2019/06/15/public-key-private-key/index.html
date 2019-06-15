@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="HHE">
 <meta property="og:description" content="在日常的工作中，我们其实经常可以遇到公钥和私钥的概念，下面通过几个部分来介绍什么是公钥、私钥。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-15T06:21:09.180Z">
+<meta property="og:updated_time" content="2019-06-15T07:27:48.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="公钥和私钥">
 <meta name="twitter:description" content="在日常的工作中，我们其实经常可以遇到公钥和私钥的概念，下面通过几个部分来介绍什么是公钥、私钥。">
@@ -331,7 +331,7 @@
     &nbsp; | &nbsp;              <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-check-o"></i>
               </span>更新于
-    <time itemprop="dateUpdated" datetime="2019-06-15T14:21:09+08:00" content="2019-06-15">
+    <time itemprop="dateUpdated" datetime="2019-06-15T15:27:48+08:00" content="2019-06-15">
       2019-06-15
     </time>
   </span>
@@ -450,12 +450,30 @@
 <li>假如此时老王在中间得到了经过加密的密文，老王会因为无法得到<code>小红的私钥</code>而放弃破解~</li>
 </ul>
 <h2 id="私钥加密-公钥解密"><a href="#私钥加密-公钥解密" class="headerlink" title="私钥加密 | 公钥解密"></a>私钥加密 | 公钥解密</h2><blockquote>
-<p>这种加密方式主要用于<code>防止明文被篡改</code>。假如现在是小红给小明发送消息，内容并不需要进行加密，但是不希望中间被截获而篡改信息。</p>
+<p>这种加密方式主要用于<code>防止明文被篡改和正确的发送方</code>。假如现在是小红给小明发送消息，内容并不需要进行加密，但是不希望中间被截获而篡改信息。</p>
 </blockquote>
 <ul>
 <li>小红使用<code>小红的私钥</code>对<code>消息正文</code>进行加密；</li>
 <li>小明收到了信息使用<code>小红的公钥</code>进行解密，如果解密成功，则说明<code>消息正文</code>没有被篡改；</li>
 <li>加入此时老王此时希望篡改小红发出的消息，最终小明会解密失败，而得之<code>消息正文</code>被篡改了~</li>
+</ul>
+<h2 id="在SSH中的应用"><a href="#在SSH中的应用" class="headerlink" title="在SSH中的应用"></a>在SSH中的应用</h2><h3 id="公钥加密-私钥解密-1"><a href="#公钥加密-私钥解密-1" class="headerlink" title="公钥加密 | 私钥解密"></a>公钥加密 | 私钥解密</h3><blockquote>
+<p>在<code>SSH</code>中使用该种该种方式处理登录的加密。下面模拟客户端向服务端发送登录请求的过程。</p>
+</blockquote>
+<ul>
+<li>客户端向服务器发送登录请求；</li>
+<li>服务端收到登录请求后，返回一个服务器的<code>公钥</code>；</li>
+<li>客户端会接收到一个<code>公钥指纹</code>(公钥<code>md5</code>后的结果，为了方便比对)，比对无误后，会加入到<code>know_hosts</code>文件中。然后通过<code>服务器返回的公钥</code>对密码进行加密，发送至服务器；</li>
+<li>服务器收到<code>密文</code>后通过自身的<code>私钥</code>进行解密，如果成功解密且密码正确，则该次登录成功。</li>
+</ul>
+<h3 id="私钥加密-公钥解密-1"><a href="#私钥加密-公钥解密-1" class="headerlink" title="私钥加密 | 公钥解密"></a>私钥加密 | 公钥解密</h3><blockquote>
+<p>免密码登录的实现，服务里需要知道客户端的<code>公钥</code>。</p>
+</blockquote>
+<ul>
+<li>客户端向服务器发送登录请求；</li>
+<li>服务端收到登录请求后，返回一个随机的字符串；</li>
+<li>客户端拿到字符串，通过<code>私钥</code>对其进行加密，发送到服务器；</li>
+<li>服务器使用<code>客户端的公钥</code>对<code>密文</code>进行解密，解密成功即表示认证成功。</li>
 </ul>
 <h2 id="相关知识点"><a href="#相关知识点" class="headerlink" title="相关知识点"></a>相关知识点</h2><ul>
 <li><code>对称加密</code>和<code>非对称加密</code></li>
@@ -689,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是公钥、私钥"><span class="nav-number">1.</span> <span class="nav-text">什么是公钥、私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公钥加密-私钥解密"><span class="nav-number">2.</span> <span class="nav-text">公钥加密 | 私钥解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#私钥加密-公钥解密"><span class="nav-number">3.</span> <span class="nav-text">私钥加密 | 公钥解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关知识点"><span class="nav-number">4.</span> <span class="nav-text">相关知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是公钥、私钥"><span class="nav-number">1.</span> <span class="nav-text">什么是公钥、私钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公钥加密-私钥解密"><span class="nav-number">2.</span> <span class="nav-text">公钥加密 | 私钥解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#私钥加密-公钥解密"><span class="nav-number">3.</span> <span class="nav-text">私钥加密 | 公钥解密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在SSH中的应用"><span class="nav-number">4.</span> <span class="nav-text">在SSH中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#公钥加密-私钥解密-1"><span class="nav-number">4.1.</span> <span class="nav-text">公钥加密 | 私钥解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私钥加密-公钥解密-1"><span class="nav-number">4.2.</span> <span class="nav-text">私钥加密 | 公钥解密</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关知识点"><span class="nav-number">5.</span> <span class="nav-text">相关知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
