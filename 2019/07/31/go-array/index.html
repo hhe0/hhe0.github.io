@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="HHE">
 <meta property="og:description" content="数组是具有固定的长度且拥有零个或者多个相同数据类型元素的序列。由于数组的长度固定，所以在go里面很少直接使用。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-07-31T10:38:57.276Z">
+<meta property="og:updated_time" content="2019-08-02T07:52:52.957Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【go】数组">
 <meta name="twitter:description" content="数组是具有固定的长度且拥有零个或者多个相同数据类型元素的序列。由于数组的长度固定，所以在go里面很少直接使用。">
@@ -331,8 +331,8 @@
     &nbsp; | &nbsp;              <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-check-o"></i>
               </span>更新于
-    <time itemprop="dateUpdated" datetime="2019-07-31T18:38:57+08:00" content="2019-07-31">
-      2019-07-31
+    <time itemprop="dateUpdated" datetime="2019-08-02T15:52:52+08:00" content="2019-08-02">
+      2019-08-02
     </time>
   </span>
 
@@ -407,7 +407,7 @@
 </blockquote>
 <a id="more"></a>
 <h2 id="数组的声明"><a href="#数组的声明" class="headerlink" title="数组的声明"></a>数组的声明</h2><ul>
-<li>对于数组来说，数组的长度也是数组的类型，所以<code>[2]int</code>与<code>[3]int</code>不是</li>
+<li>对于数组来说，数组的长度也是数组的类型，所以<code>[2]int</code>与<code>[3]int</code>不是相同的类型。</li>
 </ul>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a [<span class="number">3</span>]<span class="keyword">int</span></span><br></pre></td></tr></table></figure>
 <h2 id="数组的初始化"><a href="#数组的初始化" class="headerlink" title="数组的初始化"></a>数组的初始化</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a [<span class="number">3</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line"><span class="keyword">var</span> a [<span class="number">3</span>]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line">a := [...]<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">a := [...]<span class="keyword">int</span>&#123;<span class="number">99</span>: <span class="number">-1</span>&#125;</span><br></pre></td></tr></table></figure>
