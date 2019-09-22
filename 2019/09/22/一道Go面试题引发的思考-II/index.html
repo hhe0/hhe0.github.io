@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://hhe0.github.io">
-  <title>Python中的运算符 | HHE 的博客~</title>
+  <title>【go】一道Go面试题引发的思考 II | HHE 的博客~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Python中的运算符与其他类C语言的运算符有一些区别，注意区分掌握。">
-<meta name="keywords" content="python">
+  <meta name="description" content="在公众号看到的一个面试题，主要考察for循环与指针的用法，初学者容易在此踩坑。">
+<meta name="keywords" content="go 面试题">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python中的运算符">
-<meta property="og:url" content="http://hhe0.github.io/2019/01/19/python-operator/index.html">
+<meta property="og:title" content="【go】一道Go面试题引发的思考 II">
+<meta property="og:url" content="http://hhe0.github.io/2019/09/22/一道Go面试题引发的思考-II/index.html">
 <meta property="og:site_name" content="HHE 的博客~">
-<meta property="og:description" content="Python中的运算符与其他类C语言的运算符有一些区别，注意区分掌握。">
+<meta property="og:description" content="在公众号看到的一个面试题，主要考察for循环与指针的用法，初学者容易在此踩坑。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-07T13:25:51.004Z">
+<meta property="og:updated_time" content="2019-09-22T05:00:18.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python中的运算符">
-<meta name="twitter:description" content="Python中的运算符与其他类C语言的运算符有一些区别，注意区分掌握。">
+<meta name="twitter:title" content="【go】一道Go面试题引发的思考 II">
+<meta name="twitter:description" content="在公众号看到的一个面试题，主要考察for循环与指针的用法，初学者容易在此踩坑。">
   
     <link rel="alternative" href="/atom.xml" title="HHE 的博客~" type="application/atom+xml">
   
@@ -153,14 +153,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python-operator" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-一道Go面试题引发的思考-II" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Python中的运算符
+      【go】一道Go面试题引发的思考 II
     </h1>
   
 
@@ -175,8 +175,8 @@
           </a>
           
         
-        <a href="/2019/01/19/python-operator/" class="archive-article-date">
-  	<time datetime="2019-01-19T10:30:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-19</time>
+        <a href="/2019/09/22/一道Go面试题引发的思考-II/" class="archive-article-date">
+  	<time datetime="2019-09-22T04:42:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-22</time>
 </a>
         
       </header>
@@ -184,334 +184,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p><code>Python</code>中的运算符与其他<code>类C语言</code>的运算符有一些区别，注意区分掌握。</p>
+<p>在<a href="https://mp.weixin.qq.com/s/Vwb-48SF19OaJr0zHOdfzg" target="_blank" rel="noopener">公众号</a>看到的一个面试题，主要考察<code>for</code>循环与指针的用法，初学者容易在此踩坑。</p>
 </blockquote>
 <a id="more"></a>
-<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>+</td>
-<td>加</td>
-<td></td>
-</tr>
-<tr>
-<td>-</td>
-<td>减</td>
-<td></td>
-</tr>
-<tr>
-<td>*</td>
-<td>乘</td>
-<td></td>
-</tr>
-<tr>
-<td>/</td>
-<td>除</td>
-<td>特别注意/与//的区别</td>
-</tr>
-<tr>
-<td>%</td>
-<td>取模</td>
-<td></td>
-</tr>
-<tr>
-<td>**</td>
-<td>幂</td>
-<td>python中很有特色的运算符</td>
-</tr>
-<tr>
-<td>//</td>
-<td>整除</td>
-<td>向下取整</td>
-</tr>
-</tbody>
-</table>
-<h2 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h2><table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>==</td>
-<td>等于</td>
-<td></td>
-</tr>
-<tr>
-<td>!=</td>
-<td>不等于</td>
-<td>注意没有&lt;&gt;运算符</td>
-</tr>
-<tr>
-<td>&gt;</td>
-<td>大于</td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;</td>
-<td>小于</td>
-<td></td>
-</tr>
-<tr>
-<td>>=</td>
-<td>大于等于</td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;=</td>
-<td>小于等于</td>
-</tr>
-</tbody>
-</table>
-<h2 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h2><table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>=</td>
-<td>简单的赋值运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>+=</td>
-<td>加法赋值运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>-=</td>
-<td>减法赋值运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>*=</td>
-<td>乘法赋值运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>/=</td>
-<td>除法赋值运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>%=</td>
-<td>取模赋值运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>**=</td>
-<td>幂赋值运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>//=</td>
-<td>取整除赋值运算符</td>
-</tr>
-</tbody>
-</table>
-<h2 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h2><table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>&amp;</td>
-<td>按位与</td>
-<td></td>
-</tr>
-<tr>
-<td>\</td>
-<td>按位或</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>^</td>
-<td>按位异或</td>
-<td></td>
-</tr>
-<tr>
-<td>~</td>
-<td>按位取反</td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;&lt;</td>
-<td>左移运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>>&gt;</td>
-<td>右移运算符</td>
-</tr>
-</tbody>
-</table>
-<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>and</td>
-<td>布尔与</td>
-<td></td>
-</tr>
-<tr>
-<td>or</td>
-<td>布尔或</td>
-<td></td>
-</tr>
-<tr>
-<td>not</td>
-<td>布尔非</td>
-</tr>
-</tbody>
-</table>
-<h2 id="成员运算符"><a href="#成员运算符" class="headerlink" title="成员运算符"></a>成员运算符</h2><ul>
-<li>适用于字符串、列表和元组。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>in</td>
-<td>在指定的序列中返回<code>True</code>，否则返回<code>False</code></td>
-<td></td>
-</tr>
-<tr>
-<td>not in</td>
-<td>不在指定的序列中返回<code>True</code>，否则返回<code>False</code></td>
-</tr>
-</tbody>
-</table>
-<h2 id="身份运算符"><a href="#身份运算符" class="headerlink" title="身份运算符"></a>身份运算符</h2><ul>
-<li>用于比较两个对象的存储单元。</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>is</td>
-<td>判断两个标识符是不是引用自一个对象</td>
-<td></td>
-</tr>
-<tr>
-<td>is not</td>
-<td>判断两个标识符是不是引用自不同对象</td>
-</tr>
-</tbody>
-</table>
-<h2 id="三目运算符"><a href="#三目运算符" class="headerlink" title="三目运算符"></a>三目运算符</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">为真时的结果 <span class="keyword">if</span> 判定条件 <span class="keyword">else</span> 为假时的结果</span><br></pre></td></tr></table></figure>
-<h2 id="运算符优先级"><a href="#运算符优先级" class="headerlink" title="运算符优先级"></a>运算符优先级</h2><table>
-<thead>
-<tr>
-<th>运算符</th>
-<th>描述</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>**</td>
-<td>指数</td>
-<td></td>
-</tr>
-<tr>
-<td>~、+、-</td>
-<td>按位翻转, 一元加号和减号</td>
-<td></td>
-</tr>
-<tr>
-<td>*、/、%、//</td>
-<td>乘、除、取模和取整除</td>
-<td></td>
-</tr>
-<tr>
-<td>+、-</td>
-<td>加法减法</td>
-<td></td>
-</tr>
-<tr>
-<td>>&gt;、&lt;&lt;</td>
-<td>右移，左移运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>&amp;</td>
-<td>位 ‘AND’</td>
-<td></td>
-</tr>
-<tr>
-<td>^、\</td>
-<td></td>
-<td>位运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>&lt;=、&lt;、&gt;、&gt;=</td>
-<td>比较运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>==、！=</td>
-<td>等于运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>=、%=、/=、/=、-=、+=、*=、**=</td>
-<td>赋值运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>is、is not</td>
-<td>身份运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>in、not in</td>
-<td>成员运算符</td>
-<td></td>
-</tr>
-<tr>
-<td>and、or、not</td>
-<td>逻辑运算符</td>
-</tr>
-</tbody>
-</table>
+<h2 id="简单的-for-循环"><a href="#简单的-for-循环" class="headerlink" title="简单的 for 循环"></a>简单的 for 循环</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	slice := []<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> key, val := <span class="keyword">range</span> slice &#123;</span><br><span class="line">		m[key] = val</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> k, v := <span class="keyword">range</span> m &#123;</span><br><span class="line">		fmt.Println(k, <span class="string">"&gt;"</span>, v)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> &gt; <span class="number">0</span></span><br><span class="line"><span class="number">1</span> &gt; <span class="number">1</span></span><br><span class="line"><span class="number">2</span> &gt; <span class="number">2</span></span><br><span class="line"><span class="number">3</span> &gt; <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>再次运行</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span> &gt; <span class="number">1</span></span><br><span class="line"><span class="number">2</span> &gt; <span class="number">2</span></span><br><span class="line"><span class="number">3</span> &gt; <span class="number">3</span></span><br><span class="line"><span class="number">0</span> &gt; <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>可以观察到<code>go</code>中<code>map</code>遍历的特性。</p>
+<h2 id="一道面试题"><a href="#一道面试题" class="headerlink" title="一道面试题"></a>一道面试题</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	slice := []<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]*<span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> key, val := <span class="keyword">range</span> slice &#123;</span><br><span class="line">		m[key] = &amp;val</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> k, v := <span class="keyword">range</span> m &#123;</span><br><span class="line">		fmt.Println(k, <span class="string">"&gt;"</span>, *v)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">2</span> &gt; <span class="number">3</span></span><br><span class="line"><span class="number">3</span> &gt; <span class="number">3</span></span><br><span class="line"><span class="number">0</span> &gt; <span class="number">3</span></span><br><span class="line"><span class="number">1</span> &gt; <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>运行结果可能与预想的有些差别，关键在于：<code>for ... range</code>每次创建的是元素的一个副本，而不是元素的引用，因此<code>&amp;val</code>并不会发生变化，但是<code>val</code>会随着遍历而变成<code>0, 1, 2, 3</code>，最终的结果就都是<code>3</code>。</p>
+<h2 id="更多思考"><a href="#更多思考" class="headerlink" title="更多思考"></a>更多思考</h2><p>所以，如何得到我们想要的结果呢？</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	slice := []<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]*<span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> key := <span class="keyword">range</span> slice &#123;</span><br><span class="line">		m[key] = &amp;slice[key]</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> k, v := <span class="keyword">range</span> m &#123;</span><br><span class="line">		fmt.Println(k, <span class="string">"&gt;"</span>, *v)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span> &gt; <span class="number">0</span></span><br><span class="line"><span class="number">1</span> &gt; <span class="number">1</span></span><br><span class="line"><span class="number">2</span> &gt; <span class="number">2</span></span><br><span class="line"><span class="number">3</span> &gt; <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>也可以这么处理</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">"fmt"</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	slice := []<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">	m := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">int</span>]*<span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> key, val := <span class="keyword">range</span> slice &#123;</span><br><span class="line">		value := &amp;val</span><br><span class="line">		m[key] = value</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">for</span> k, v := <span class="keyword">range</span> m &#123;</span><br><span class="line">		fmt.Println(k, <span class="string">"&gt;"</span>, *v)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以得到相同的结果。</p>
 
       
 
@@ -525,7 +217,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">go 面试题</a>
         		</li>
       		
 		</ul>
@@ -537,7 +229,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/python随笔//" class="article-tag-list-link color4">python随笔</a>
+        			<a href="/categories/go学习笔记//" class="article-tag-list-link color2">go学习笔记</a>
         		</li>
       		
 		</ul>
@@ -592,7 +284,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://hhe0.github.io/2019/01/19/python-operator/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://hhe0.github.io/2019/09/22/一道Go面试题引发的思考-II/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -606,18 +298,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/01/26/automate-the-boring-stuff-with-python-7/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          【Python编程快速上手(七)】
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/01/17/python-function/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python常用函数与方法</div>
+    <a href="/2019/09/20/如何实现Map的顺序遍历/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">【go】如何实现Map的顺序遍历</div>
       <i class="icon-circle-right"></i>
     </a>
   
