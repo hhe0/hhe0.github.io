@@ -60,12 +60,14 @@
 	        
 				<li><a href="/archives/">归档</a></li>
 	        
+				<li><a href="/resume/">简历</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">发现</a>
     			
             
     			
@@ -110,6 +112,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -125,12 +129,14 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/archives/">归档</a></li>
+					<li style="width: 33.333333333333336%"><a href="/archives/">归档</a></li>
+		        
+					<li style="width: 33.333333333333336%"><a href="/resume/">简历</a></li>
 		        
 				</ul>
 			</nav>
@@ -147,22 +153,22 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-sql-antipatterns-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mysql-group-by" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/23/sql-antipatterns-2/">SQL反模式(二)：单纯的树</a>
+      <a class="article-title" href="/2018/08/21/mysql-group-by/">Mysql关键字之group by(一)</a>
     </h1>
   
 
         <!--显示阅读次数-->
         
         
-        <a href="/2018/10/23/sql-antipatterns-2/" class="archive-article-date">
-  	<time datetime="2018-10-23T11:05:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-23</time>
+        <a href="/2018/08/21/mysql-group-by/" class="archive-article-date">
+  	<time datetime="2018-08-20T18:08:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
 </a>
         
       </header>
@@ -170,10 +176,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <blockquote>
-<p>树就是树，你还需要考虑什么呢？一个分层数据结构包含了数据项和它们之间的关系。需要合理的设计两者的模型来配合你的工作。</p>
+<p><code>group by</code> 是一个我们在日常工作学习过程中经常遇到的一个<code>Mysql</code>关键字。现总结其用法如下，内容会不断补充更正，出现错误欢迎批评指正。    </p>
 </blockquote>
         
-          <a class="article-more-a" href="/2018/10/23/sql-antipatterns-2/#more">more >></a>
+          <a class="article-more-a" href="/2018/08/21/mysql-group-by/#more">more >></a>
         
       
 
@@ -187,11 +193,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
         		</li>
       		
 		</ul>
@@ -203,7 +205,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/SQL读书笔记系列//" class="article-tag-list-link color5">SQL读书笔记系列</a>
+        			<a href="/categories/Mysql随笔系列//" class="article-tag-list-link color5">Mysql随笔系列</a>
         		</li>
       		
 		</ul>
@@ -212,379 +214,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/23/sql-antipatterns-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sql-antipatterns" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/23/sql-antipatterns/">SQL反模式(一)：乱穿马路</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-        
-        
-        <a href="/2018/10/23/sql-antipatterns/" class="archive-article-date">
-  	<time datetime="2018-10-23T11:05:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>程序员通常使用逗号分隔的列表来避免在多对多的关系中创建交叉表，我将这种设计方式定义为一种反模式，称为『乱穿马路』，因为乱穿马路也是避免过十字路口的一种方式。每个值都应该存储在各自的行与列中。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/10/23/sql-antipatterns/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/SQL读书笔记系列//" class="article-tag-list-link color5">SQL读书笔记系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/23/sql-antipatterns/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-the-celtic-twilight" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/21/the-celtic-twilight/">【凯尔特的薄暮】书摘</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-        
-        
-        <a href="/2018/10/21/the-celtic-twilight/" class="archive-article-date">
-  	<time datetime="2018-10-21T06:41:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>爱尔兰民族的民间故事集。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/10/21/the-celtic-twilight/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">书摘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/书摘//" class="article-tag-list-link color3">书摘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/21/the-celtic-twilight/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-sapiens-brief-history-of-humankind" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/20/sapiens-brief-history-of-humankind/">【人类简史】书摘</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-        
-        
-        <a href="/2018/10/20/sapiens-brief-history-of-humankind/" class="archive-article-date">
-  	<time datetime="2018-10-20T12:47:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>人类简史——从动物到上帝。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/10/20/sapiens-brief-history-of-humankind/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">书摘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/书摘//" class="article-tag-list-link color3">书摘</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/20/sapiens-brief-history-of-humankind/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-php-objects-patterns-and-practice-6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/19/php-objects-patterns-and-practice-6/">【深入PHP：面向对象、模式与实践(六)】读书笔记</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-        
-        
-        <a href="/2018/10/19/php-objects-patterns-and-practice-6/" class="archive-article-date">
-  	<time datetime="2018-10-19T10:42:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>利用多态带来的而灵活型（在运行时切换不同的具体实现），我们可以采用多种面面向对象设计方案来处理优美且简洁的抽象类。这章主要介绍单例模式、工厂方法模式、抽象工厂模式以及原型模式。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/10/19/php-objects-patterns-and-practice-6/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">读书笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP读书笔记系列//" class="article-tag-list-link color5">PHP读书笔记系列</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/19/php-objects-patterns-and-practice-6/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/08/21/mysql-group-by/">展开全文 >></a>
         </p>
       
 
@@ -616,7 +246,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/13/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span><a class="page-number" href="/page/15/">15</a><a class="page-number" href="/page/16/">16</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="extend next" rel="next" href="/page/15/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/13/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="page-number current">14</span>
     </nav>
   
 
@@ -630,12 +260,10 @@
     	<div class="footer-left">
     		&copy; 2019 HHE
     	</div>
-      <span id="busuanzi_container_site_pv">    本站总访问量: <span id="busuanzi_value_site_pv"></span></span>
+    	<span id="busuanzi_container_site_uv">访客数: <span id="busuanzi_value_site_uv"></span></span>
 
-      <span id="busuanzi_container_site_uv">  本站访客数: <span id="busuanzi_value_site_uv"></span></span>
-      	<div class="footer-right">
-      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
-      	</div>
+      <span id="busuanzi_container_site_pv">总访问量: <span id="busuanzi_value_site_pv"></span></span>
+
     </div>
   </div>
 </footer>
@@ -707,7 +335,7 @@ MathJax.Hub.Queue(function() {
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">发现</a></li>
       
         
       
@@ -761,6 +389,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">go</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">go 面试题</a>
               </li>
              
               <li class="article-tag-list-item">
