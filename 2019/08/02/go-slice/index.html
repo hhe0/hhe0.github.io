@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="HHE 的博客~">
 <meta property="og:description" content="slice表示一个拥有相同类型元素的可变长度的序列。slice通常写成[]T，其中元素的类型都是T；它看上去像没有长度的数组类型。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-02T07:46:51.245Z">
+<meta property="og:updated_time" content="2019-09-27T03:25:22.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="【go】slice">
 <meta name="twitter:description" content="slice表示一个拥有相同类型元素的可变长度的序列。slice通常写成[]T，其中元素的类型都是T；它看上去像没有长度的数组类型。">
@@ -187,6 +187,10 @@
 <p><code>slice</code>表示一个拥有相同类型元素的可变长度的序列。<code>slice</code>通常写成<code>[]T</code>，其中元素的类型都是<code>T</code>；它看上去像没有长度的数组类型。</p>
 </blockquote>
 <a id="more"></a>
+<h2 id="创建slice"><a href="#创建slice" class="headerlink" title="创建slice"></a>创建slice</h2><p>内置函数<code>make</code>可以创建一个指定元素类型、长度和容量的<code>slice</code>。容量省略时，表示容量与长度相等。<strong>特别注意，我们不能创建长度大于容量的切片。</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建了一个无名数组并且返回了它的一个 slice，该 slice 引用了整个数组</span></span><br><span class="line"><span class="built_in">make</span>([]T, <span class="built_in">len</span>)</span><br><span class="line"><span class="comment">// 该 slice 只引用了数组的前 len 个元素</span></span><br><span class="line"><span class="built_in">make</span>([]T, <span class="built_in">len</span>, <span class="built_in">cap</span>) <span class="comment">// 等价于 make([]T, cap)[:len]</span></span><br></pre></td></tr></table></figure>
+<p><code>s[i:j](0 &lt;= i &lt;= j &lt;= cap(s))</code>创建了一个新的<code>slice</code>，这里的<code>s</code>即可以是数组或者指向数组的指针，也可以是<code>slice</code>。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">months[<span class="number">4</span>:<span class="number">7</span>]</span><br></pre></td></tr></table></figure>
 <h2 id="slice与数组"><a href="#slice与数组" class="headerlink" title="slice与数组"></a>slice与数组</h2><ul>
 <li><code>slice</code>是一种轻量级的数据结构，可以用来访问数组的部分或者全部的元素，而这个数组称为<code>slice</code>的底层数组；</li>
 <li><code>slice</code>有三个属性：指针、长度和容量；</li>
@@ -195,27 +199,38 @@
 <li>容量的大小通常是从<code>slice</code>的起始元素到底层数组的最后一个元素间元素的个数，通过<code>cap(T)</code>获取；</li>
 <li>一个底层数组可以对应多个<code>slice</code>，这些<code>slice</code>可以引用数组的任何位置，彼此之间的元素还可以重叠。</li>
 </ul>
-<h2 id="创建slice"><a href="#创建slice" class="headerlink" title="创建slice"></a>创建slice</h2><p>内置函数<code>make</code>可以创建一个指定元素类型、长度和容量的<code>slice</code>。容量省略时，表示容量与长度相等。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 创建了一个无名数组并且返回了它的一个 slice，该 slice 引用了整个数组</span></span><br><span class="line"><span class="built_in">make</span>([]T, <span class="built_in">len</span>)</span><br><span class="line"><span class="comment">// 该 slice 只引用了数组的前 len 个元素</span></span><br><span class="line"><span class="built_in">make</span>([]T, <span class="built_in">len</span>, <span class="built_in">cap</span>) <span class="comment">// 等价于 make([]T, cap)[:len]</span></span><br></pre></td></tr></table></figure>
-<p><code>s[i:j](0 &lt;= i &lt;= j &lt;= cap(s))</code>创建了一个新的<code>slice</code>，这里的<code>s</code>即可以是数组或者指向数组的指针，也可以是<code>slice</code>。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">months[<span class="number">4</span>:<span class="number">7</span>]</span><br></pre></td></tr></table></figure>
-<h2 id="slice的初始化"><a href="#slice的初始化" class="headerlink" title="slice的初始化"></a>slice的初始化</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s := []<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="slice的零值"><a href="#slice的零值" class="headerlink" title="slice的零值"></a>slice的零值</h2><ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s := <span class="keyword">int</span>[]&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>&#125;</span><br><span class="line"></span><br><span class="line">s1 := s[<span class="number">2</span>:<span class="number">4</span>]</span><br><span class="line"><span class="comment">// 2 8</span></span><br><span class="line">fmt.Println(<span class="built_in">len</span>(s1), <span class="built_in">cap</span>(s1))</span><br><span class="line"></span><br><span class="line">s2 := s[<span class="number">2</span>:<span class="number">4</span>:<span class="number">8</span>]</span><br><span class="line"><span class="comment">// 2 6</span></span><br><span class="line">fmt.Println(<span class="built_in">len</span>(s1), <span class="built_in">cap</span>(s2))</span><br></pre></td></tr></table></figure>
+<h2 id="slice的初始化"><a href="#slice的初始化" class="headerlink" title="slice的初始化"></a>slice的初始化</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s := []<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">s := []<span class="keyword">int</span>&#123;<span class="number">4</span>:<span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="切片的零值"><a href="#切片的零值" class="headerlink" title="切片的零值"></a>切片的零值</h2><ul>
 <li><code>slice</code>的零值是<code>nil</code>，值为<code>nil</code>为<code>slice</code>没有对应的底层数组；</li>
 <li>值为<code>nil</code>的<code>slice</code>长度和容量都为零，但是也有非<code>nil</code>的<code>slice</code>长度和容量是零；</li>
 <li>使用<code>len(s) == 0</code>来判断一个<code>slice</code>是否为空。</li>
 </ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> s[]<span class="keyword">int</span>     <span class="comment">// len(s) == 0, s == nil</span></span><br><span class="line">s = <span class="literal">nil</span>        <span class="comment">// len(s) == 0, s == nil</span></span><br><span class="line">s = []<span class="keyword">int</span>(<span class="literal">nil</span>) <span class="comment">// len(s) == 0, s == nil</span></span><br><span class="line">s = []<span class="keyword">int</span>&#123;&#125;    <span class="comment">// len(s) == 0, s != nil</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// nil 切片</span></span><br><span class="line"><span class="keyword">var</span> s[]<span class="keyword">int</span>          <span class="comment">// len(s) == 0, s == nil</span></span><br><span class="line">s = <span class="literal">nil</span>             <span class="comment">// len(s) == 0, s == nil</span></span><br><span class="line">s = []<span class="keyword">int</span>(<span class="literal">nil</span>)      <span class="comment">// len(s) == 0, s == nil</span></span><br><span class="line"><span class="comment">// 空切片</span></span><br><span class="line">s = []<span class="keyword">int</span>&#123;&#125;        <span class="comment">// len(s) == 0, s != nil </span></span><br><span class="line">s = <span class="built_in">make</span>([]<span class="keyword">int</span>, <span class="number">0</span>) <span class="comment">// len(s) == 0, s != nil</span></span><br></pre></td></tr></table></figure>
 <h2 id="slice的比较"><a href="#slice的比较" class="headerlink" title="slice的比较"></a>slice的比较</h2><ul>
 <li><code>slice</code>无法做比较，只能与<code>nil</code>做比较。</li>
 </ul>
-<h2 id="slice的遍历"><a href="#slice的遍历" class="headerlink" title="slice的遍历"></a>slice的遍历</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> _, s := <span class="keyword">range</span> number&#123;</span><br><span class="line">  <span class="keyword">for</span> _, q := <span class="keyword">range</span> Q2 &#123;</span><br><span class="line">    <span class="keyword">if</span> s == q &#123;</span><br><span class="line">      fmt.Println(<span class="string">"%s appears int both\n"</span>, s)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="slice的遍历"><a href="#slice的遍历" class="headerlink" title="slice的遍历"></a>slice的遍历</h2><ul>
+<li><strong>特别注意：<code>range</code>返回的是元素的复制，而不是元素的引用。</strong></li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(s); i++ &#123;</span><br><span class="line">  fmt.Println(i, s[i])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> _, s := <span class="keyword">range</span> number&#123;</span><br><span class="line">  <span class="keyword">for</span> _, q := <span class="keyword">range</span> Q2 &#123;</span><br><span class="line">    <span class="keyword">if</span> s == q &#123;</span><br><span class="line">      fmt.Println(<span class="string">"%s appears int both\n"</span>, s)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="slice作为函数的参数"><a href="#slice作为函数的参数" class="headerlink" title="slice作为函数的参数"></a>slice作为函数的参数</h2><p>因为<code>slice</code>包含了指向数组元素的指针，所以将一个<code>slice</code>传递个函数的时候，可以在函数内部修改底层数组的元素。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">resverse</span><span class="params">(s []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  <span class="keyword">for</span> i, j := <span class="number">0</span>, <span class="built_in">len</span>(s)<span class="number">-1</span>; i &lt; j; i, j = i+<span class="number">1</span>, j<span class="number">-1</span> &#123;</span><br><span class="line">    s[i], s[j] = s[j], s[i]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="append函数"><a href="#append函数" class="headerlink" title="append函数"></a>append函数</h2><ul>
 <li>当<code>slice</code>因为添加了新的元素导致容量不足的时候，此时会再分配一个容量的数组，然后原有数组会拷贝过去，再进行添加的动作；</li>
-<li>对于任何函数，只要有可能改变<code>slice</code>的长度和容量，抑或是使得<code>slice</code>指向不同的底层数组，都需要更新<code>slice</code>变量。</li>
+<li><code>append</code>函数会智能地增加底层数组的容量，目前的算法是：当数组容量<code>&lt;=1024</code>时，会成倍地增加；当超过<code>1024</code>，增长因子变为<code>1.25</code>，也就是说每次会增加<code>25%</code>的容量；</li>
+<li>对于任何函数，只要有可能改变<code>slice</code>的长度和容量，抑或是使得<code>slice</code>指向不同的底层数组，都需要更新<code>slice</code>变量；</li>
+<li>一般我们在创建新切片的时候，最好要让新切片的长度和容量一样，这样我们在追加操作的时候就会生成新的底层数据，和原有数据分离，就不会因为共用底层数据而引起奇怪问题，因为共用数组的时候修改内容，会影响多个切片。</li>
 </ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s1 := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;</span><br><span class="line">s1 = <span class="built_in">append</span>(s1, <span class="number">4</span>)</span><br><span class="line"><span class="comment">// [1 2 3 4]</span></span><br><span class="line">fmt.Println(s1)</span><br><span class="line"></span><br><span class="line">s2 := []<span class="keyword">int</span>&#123;<span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>&#125;</span><br><span class="line">s1 = <span class="built_in">append</span>(s1, s2...)</span><br><span class="line"><span class="comment">// [1 2 3 4 5 6 7]</span></span><br><span class="line">fmt.Println(s1)</span><br></pre></td></tr></table></figure>
+<h2 id="删除切片元素"><a href="#删除切片元素" class="headerlink" title="删除切片元素"></a>删除切片元素</h2><ul>
+<li>将删除转为<code>append</code>操作解决。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">s = <span class="built_in">append</span>(s[:<span class="number">2</span>], s[<span class="number">3</span>:]...)</span><br><span class="line">fmt.Println(s)</span><br></pre></td></tr></table></figure>
+<h2 id="slice-的-copy"><a href="#slice-的-copy" class="headerlink" title="slice 的 copy"></a>slice 的 copy</h2><ul>
+<li><code>copy</code>操作只会复制<code>dst</code>并覆盖，<code>src</code>的长度和容量不会因此扩展。</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将源切片复制到目标切片，返回两者长度的最小值</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">copy</span><span class="params">(dst, src []Type)</span> <span class="title">int</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">var</span> <span class="title">s1</span> []<span class="title">int</span></span></span><br><span class="line"><span class="function"><span class="title">s2</span> := []<span class="title">int</span></span>&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>&#125;</span><br><span class="line">s3 := []<span class="keyword">int</span>&#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line"></span><br><span class="line">n1 := <span class="built_in">copy</span>(s1, s2)</span><br><span class="line"><span class="comment">// 0 [] [1 2 3 4]</span></span><br><span class="line">fmt.Println(n1, s1, s2)</span><br><span class="line"></span><br><span class="line">n2 := <span class="built_in">copy</span>(s2, s3)</span><br><span class="line"><span class="comment">// 3 [4 5 6 4] [4 5 6]</span></span><br><span class="line">fmt.Println(n2, s2, s3)</span><br></pre></td></tr></table></figure>
 <h2 id="slice就地修改"><a href="#slice就地修改" class="headerlink" title="slice就地修改"></a>slice就地修改</h2><p>从一个字符串列表中去除空字符串并返回一个新的<code>slice</code></p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">nonempty</span><span class="params">(strings []<span class="keyword">string</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">  i := <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> _, s := <span class="keyword">range</span> strings &#123;</span><br><span class="line">    strings[i] = s</span><br><span class="line">    i++</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> strings[:i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">nonempty2</span><span class="params">(strings []<span class="keyword">string</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">  out := strings[:<span class="number">0</span>]</span><br><span class="line">  <span class="keyword">for</span> _, s := <span class="keyword">range</span> strings &#123;</span><br><span class="line">    <span class="keyword">if</span> s != <span class="string">""</span> &#123;</span><br><span class="line">      out = <span class="built_in">append</span>(out, s)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">return</span> out</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>使用<code>slice</code>实现栈</p>
@@ -225,6 +240,8 @@
 <p>就地修改可以避免内存的再分配。</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://book.douban.com/subject/27044219/" target="_blank" rel="noopener">《Go程序设计语言》</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzUxNjk4MDY1NA==&mid=2247483856&idx=1&sn=18bf041f7c548cd55b7d29cdfb1a332d&chksm=f99e6b11cee9e207766dc3b1a8e85c498c9da0f59b2d011041690ccf7cd6c0ee9fe7309248ea&token=556176193&lang=zh_CN&scene=21#wechat_redirect" target="_blank" rel="noopener">非懂不可的Slice（一）– 就要学习Go语言</a></li>
+<li><a href="https://mp.weixin.qq.com/s?__biz=MzI2MDA1MTcxMg==&mid=2648466739&idx=4&sn=9de0eba9bdb36aa3b67d8a3903c53584&chksm=f247435cc530ca4a98abd9c1b2d58a63c7716e64236076c1296ed2964cd4fb68f7c8a6d44f85&scene=21#wechat_redirect" target="_blank" rel="noopener">非懂不可的Slice（二）</a></li>
 </ul>
 
       
@@ -508,11 +525,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机原理</a>
+                <a href="javascript:void(0)" class="js-tag color2">go 面试题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">go 面试题</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机原理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -524,11 +541,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PhpStorm</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">书单</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -536,11 +553,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color4">PhpStorm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书单</a>
+                <a href="javascript:void(0)" class="js-tag color5">编程工具</a>
               </li>
              
               <li class="article-tag-list-item">

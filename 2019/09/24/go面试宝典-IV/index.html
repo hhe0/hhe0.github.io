@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="HHE 的博客~">
 <meta property="og:description" content="从公众号上看到的一些面试题，整理一下。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-24T05:58:22.732Z">
+<meta property="og:updated_time" content="2019-09-27T03:27:05.005Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Go面试题库(IV)">
 <meta name="twitter:description" content="从公众号上看到的一些面试题，整理一下。">
@@ -200,6 +200,8 @@
 <h2 id="slice"><a href="#slice" class="headerlink" title="slice"></a>slice</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  s1 := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>&#125;</span><br><span class="line">  s2 := []<span class="keyword">int</span>&#123;<span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">  s1 = <span class="built_in">append</span>(s1, s2)</span><br><span class="line">  fmt.Println(s1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>导致错误的原因是：<code>func append(slice []Type, elems ...Type) []Type</code></p>
 <p>，从<code>append</code>的定义就可以看出来，<code>append</code>的第二个参数是<code>Type</code>而不是<code>[]Type</code>。</p>
+<p>正确的方式是：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  s1 := []<span class="keyword">int</span>&#123;<span class="number">1</span>, <span class="number">2</span>&#125;</span><br><span class="line">  s2 := []<span class="keyword">int</span>&#123;<span class="number">4</span>, <span class="number">5</span>&#125;</span><br><span class="line">  s1 = <span class="built_in">append</span>(s1, s2...)</span><br><span class="line">  fmt.Println(s1)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> (</span><br><span class="line">  size := <span class="number">1024</span></span><br><span class="line">  max_size = size * <span class="number">2</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(size, max_size)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>导致错误的原因是：对于简单形式的变量声明</p>
 <ul>
@@ -489,11 +491,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机原理</a>
+                <a href="javascript:void(0)" class="js-tag color2">go 面试题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">go 面试题</a>
+                <a href="javascript:void(0)" class="js-tag color1">计算机原理</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -505,11 +507,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PhpStorm</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程工具</a>
+                <a href="javascript:void(0)" class="js-tag color3">书单</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -517,11 +519,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color4">PhpStorm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">书单</a>
+                <a href="javascript:void(0)" class="js-tag color5">编程工具</a>
               </li>
              
               <li class="article-tag-list-item">
